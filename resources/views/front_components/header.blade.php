@@ -169,11 +169,11 @@
                                         </ul>
                                     </li>
                                     <li class="has-dropdown" style="position: static;">
-                                        <a class="nav-link" href="#">Courses</a>
+                                        <a class="nav-link" href="">Courses</a>
                                         <ul class="megamenu-hub min-mega shape-move">
                                             <li>
                                                 <ul class="">
-                                                    <li class="parent"><a href="#">Courses</a></li>
+                                                    <li class="parent"><a href="{{ route('course.index') }}">Courses</a></li>
                                                     <li><a class="mobile-menu-link" href="course-one.html">Courses</a></li>
                                                     <li><a class="mobile-menu-link" href="course-two.html">Course List</a></li>
                                                     <li><a class="mobile-menu-link" href="course-three.html">Course Grid</a></li>
