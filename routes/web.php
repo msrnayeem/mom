@@ -24,3 +24,6 @@ require __DIR__.'/auth.php';
 Route::resource('/category', CategoryController::class)->except(['destroy']);
 Route::resource('/course', CourseController::class)->except(['destroy']);
 
+Route::get('/course-details', [CourseController::class, 'courseDetails'])->name('course.details');
+
+

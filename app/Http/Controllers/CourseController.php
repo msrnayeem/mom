@@ -63,4 +63,10 @@ class CourseController extends Controller
     {
         //
     }
+
+
+    public function courseDetails()
+    {
+        return view('course.show');
+    }
 }

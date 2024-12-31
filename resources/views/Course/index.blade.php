@@ -1,12 +1,29 @@
 @extends('layouts.front')
 
-@section('title', 'MOM Courses')
+@section('title', 'MOM || Courses')
 
 @section('content')
 
-{{-- breadcrumb --}}
-
-@include('front_components.breadcrumb')
+    <!-- bread crumb area -->
+    <div class="rts-bread-crumbarea-1 rts-section-gap bg_image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-main-wrapper">
+                        <h1 class="title">Our Course</h1>
+                        <!-- breadcrumb pagination area -->
+                        <div class="pagination-wrapper">
+                            <a href="/">Home</a>
+                            <i class="fa-regular fa-chevron-right"></i>
+                            <a class="active" href="{{ route('course.index') }}">All Course</a>
+                        </div>
+                        <!-- breadcrumb pagination area end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bread crumb area end -->
 
 
     <!-- course area start -->
@@ -311,8 +328,9 @@
                             <span>Showing 1-9 of 19 results</span>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                                        type="button" role="tab" aria-controls="home" aria-selected="true">
+                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                        aria-selected="true">
                                         <i class="fa-light fa-grid-2"></i>
                                         <span>Grid</span>
                                     </button>
@@ -331,12 +349,13 @@
                     </div>
                     <!-- filter top-area end -->
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                            aria-labelledby="home-tab">
                             <div class="row g-5 mt--30">
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/01.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -354,7 +373,7 @@
                                                 <span>54 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">The Complete Web Developer in
                                                 2023: Zero to Mastery</h5>
                                         </a>
@@ -387,7 +406,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/02.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -408,7 +427,7 @@
                                                 <span>60 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">How to Write the Ultimate 1 Page
                                                 Strategic Business Plan</h5>
                                         </a>
@@ -438,7 +457,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/03.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -456,7 +475,7 @@
                                                 <span>40 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">100 Days Of Code - 2023 Web
                                                 Development Bootcamp</h5>
                                         </a>
@@ -489,7 +508,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/04.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -510,7 +529,7 @@
                                                 <span>14 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">User Experience The Ultimate
                                                 Guide to Usability and UX</h5>
                                         </a>
@@ -543,7 +562,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/05.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -564,7 +583,7 @@
                                                 <span>54 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">Complete Guitar Lessons System
                                                 Beginner to Advanced</h5>
                                         </a>
@@ -597,7 +616,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/06.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -615,7 +634,7 @@
                                                 <span>54 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">How to Market Yourself as Coach or Consultant Market</h5>
                                         </a>
                                         <p class="teacher">Dr. Angela Yu</p>
@@ -644,7 +663,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/07.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -662,7 +681,7 @@
                                                 <span>54 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">How to Run truly Productive in
                                                 Meetings – and add value</h5>
                                         </a>
@@ -695,7 +714,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/08.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -716,7 +735,7 @@
                                                 <span>54 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">Pole Dancing Video Course with
                                                 Noelle Wood</h5>
                                         </a>
@@ -746,7 +765,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/01.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -764,7 +783,7 @@
                                                 <span>54 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">The Complete Web Developer in
                                                 2023: Zero to Mastery</h5>
                                         </a>
@@ -797,7 +816,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/02.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -818,7 +837,7 @@
                                                 <span>60 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">How to Write the Ultimate 1 Page
                                                 Strategic Business Plan</h5>
                                         </a>
@@ -848,7 +867,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/03.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -866,7 +885,7 @@
                                                 <span>40 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">100 Days Of Code - 2023 Web
                                                 Development Bootcamp</h5>
                                         </a>
@@ -899,7 +918,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/05.jpg" alt="course">
                                         </a>
                                         <div class="tags-area-wrapper">
@@ -917,7 +936,7 @@
                                                 <span>40 Students</span>
                                             </div>
                                         </div>
-                                        <a href="single-course.html">
+                                        <a href="{{ route('course.details') }}">
                                             <h5 class="title">100 Days Of Code - 2023 Web
                                                 Development Bootcamp</h5>
                                         </a>
@@ -965,13 +984,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel"
-                            aria-labelledby="profile-tab">
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row g-5 mt--0">
                                 <div class="col-lg-12">
                                     <!-- rts single course -->
                                     <div class="rts-single-course course-list">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/11.jpg" alt="course">
                                         </a>
                                         <div class="information-inner">
@@ -990,7 +1008,7 @@
                                                     <span>54 Students</span>
                                                 </div>
                                             </div>
-                                            <a href="single-course.html">
+                                            <a href="{{ route('course.details') }}">
                                                 <h5 class="title">The Complete Web Developer in
                                                     2023: Zero to Mastery</h5>
                                             </a>
@@ -1024,7 +1042,7 @@
                                     <!-- rts single course end -->
                                     <!-- rts single course -->
                                     <div class="rts-single-course course-list">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/12.jpg" alt="course">
                                         </a>
                                         <div class="information-inner">
@@ -1043,7 +1061,7 @@
                                                     <span>54 Students</span>
                                                 </div>
                                             </div>
-                                            <a href="single-course.html">
+                                            <a href="{{ route('course.details') }}">
                                                 <h5 class="title">The Complete Web Developer in
                                                     2023: Zero to Mastery</h5>
                                             </a>
@@ -1077,7 +1095,7 @@
                                     <!-- rts single course end -->
                                     <!-- rts single course -->
                                     <div class="rts-single-course course-list">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/13.jpg" alt="course">
                                         </a>
                                         <div class="information-inner">
@@ -1096,7 +1114,7 @@
                                                     <span>54 Students</span>
                                                 </div>
                                             </div>
-                                            <a href="single-course.html">
+                                            <a href="{{ route('course.details') }}">
                                                 <h5 class="title">The Complete Web Developer in
                                                     2023: Zero to Mastery</h5>
                                             </a>
@@ -1130,7 +1148,7 @@
                                     <!-- rts single course end -->
                                     <!-- rts single course -->
                                     <div class="rts-single-course course-list">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/14.jpg" alt="course">
                                         </a>
                                         <div class="information-inner">
@@ -1149,7 +1167,7 @@
                                                     <span>54 Students</span>
                                                 </div>
                                             </div>
-                                            <a href="single-course.html">
+                                            <a href="{{ route('course.details') }}">
                                                 <h5 class="title">The Complete Web Developer in
                                                     2023: Zero to Mastery</h5>
                                             </a>
@@ -1183,7 +1201,7 @@
                                     <!-- rts single course end -->
                                     <!-- rts single course -->
                                     <div class="rts-single-course course-list">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/15.jpg" alt="course">
                                         </a>
                                         <div class="information-inner">
@@ -1202,7 +1220,7 @@
                                                     <span>54 Students</span>
                                                 </div>
                                             </div>
-                                            <a href="single-course.html">
+                                            <a href="{{ route('course.details') }}">
                                                 <h5 class="title">The Complete Web Developer in
                                                     2023: Zero to Mastery</h5>
                                             </a>
@@ -1236,7 +1254,7 @@
                                     <!-- rts single course end -->
                                     <!-- rts single course -->
                                     <div class="rts-single-course course-list">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/16.jpg" alt="course">
                                         </a>
                                         <div class="information-inner">
@@ -1255,7 +1273,7 @@
                                                     <span>54 Students</span>
                                                 </div>
                                             </div>
-                                            <a href="single-course.html">
+                                            <a href="{{ route('course.details') }}">
                                                 <h5 class="title">The Complete Web Developer in
                                                     2023: Zero to Mastery</h5>
                                             </a>
@@ -1289,7 +1307,7 @@
                                     <!-- rts single course end -->
                                     <!-- rts single course -->
                                     <div class="rts-single-course course-list">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/17.jpg" alt="course">
                                         </a>
                                         <div class="information-inner">
@@ -1308,7 +1326,7 @@
                                                     <span>54 Students</span>
                                                 </div>
                                             </div>
-                                            <a href="single-course.html">
+                                            <a href="{{ route('course.details') }}">
                                                 <h5 class="title">The Complete Web Developer in
                                                     2023: Zero to Mastery</h5>
                                             </a>
@@ -1342,7 +1360,7 @@
                                     <!-- rts single course end -->
                                     <!-- rts single course -->
                                     <div class="rts-single-course course-list">
-                                        <a href="single-course.html" class="thumbnail">
+                                        <a href="{{ route('course.details') }}" class="thumbnail">
                                             <img src="assets/images/course/18.jpg" alt="course">
                                         </a>
                                         <div class="information-inner">
@@ -1361,7 +1379,7 @@
                                                     <span>54 Students</span>
                                                 </div>
                                             </div>
-                                            <a href="single-course.html">
+                                            <a href="{{ route('course.details') }}">
                                                 <h5 class="title">The Complete Web Developer in
                                                     2023: Zero to Mastery</h5>
                                             </a>
