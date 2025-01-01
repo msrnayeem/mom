@@ -77,7 +77,7 @@
             <div class="col-lg-12">
                 <div class="header-one-wrapper">
                     <div class="left-side-header">
-                        <a href="index.html" class="logo-area">
+                        <a href="/" class="logo-area">
                             <img src="assets/images/logo/logo-1.svg" alt="logo">
                         </a>
 
@@ -91,7 +91,7 @@
                                             <li>
                                                 <ul class="">
                                                     <li>
-                                                        <a href="index.html">Main Home</a>
+                                                        <a href="/">Main Home</a>
                                                     </li>
                                                     <li>
                                                         <a href="index-two.html">Online course </a>
