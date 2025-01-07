@@ -1,36 +1,52 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+@include('components.head')
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+<!--begin::Body-->
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+<!--begin::Body-->
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
+        <!--begin::Header-->
+        @include('components.navbar')
+        <!--end::Header-->
+
+        <!--begin::Sidebar-->
+        @include('components.sidebar')
+        <!--end::Sidebar-->
+
+        <!--begin::App Main-->
+        <main class="app-main">
+
+            <!--begin::breadcrumb-->
+            @include('components.breadcrumb')
+            <!--end::breadcrumb-->
+
+            <!--begin::App Content-->
+            <div class="app-content">
+
+                <!--begin::Container-->
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
+            <!--end::App Content-->
+        </main>
+        <!--end::App Main-->
+
+
+        <!--begin::Footer-->
+        @include('components.footer')
+        <!--end::Footer-->
+    </div>
+    <!--end::App Wrapper-->
+
+    @include('components.scripts')
+</body>
+<!--end::Body-->
+
 </html>
