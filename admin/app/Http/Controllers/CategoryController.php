@@ -38,28 +38,34 @@ class CategoryController extends Controller
 
         // Check if the same name exists for the combination of languages
         $exists = Category::whereJsonContains('name', ['en' => $request->name['en']])
-                          ->orWhereJsonContains('name', ['bn' => $request->name['bn']])
-                          ->exists();
+                        ->orWhereJsonContains('name', ['bn' => $request->name['bn']])
+                        ->exists();
 
         if ($exists) {
             return redirect()->back()->withErrors(['name' => 'The category name must be unique across all languages.'])->withInput();
         }
 
-        Category::create([
-            'name' => $request->name,
-            'is_visible' => $request->has('is_visible') ? $request->is_visible : true, // Default to true
-            'position' => Category::getNextPosition(), // Auto-assign position
-        ]);
+        try {
+            Category::create([
+                'name' => $request->name,
+                'is_visible' => $request->has('is_visible') ? $request->is_visible : true, // Default to true
+                'position' => Category::getNextPosition(), // Auto-assign position
+            ]);
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+            return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        } catch (\Exception $e) {
+            // Store the exact SQL error message in the success session
+            return redirect()->route('categories.index')->with('success', $e->getMessage());
+        }
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Category $category)
     {
-        //
+
     }
 
     /**
@@ -73,41 +79,50 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+
+    public function update(Request $request, Course $course)
     {
-        // Validate the request
+        // Validate the request data
         $request->validate([
             'name' => 'required|array',
             'name.en' => 'required|string',
             'name.bn' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string',
         ]);
 
         // Only check for name duplication if the name has changed
-        $nameChanged = $category->name['en'] !== $request->name['en'] || $category->name['bn'] !== $request->name['bn'];
+        $nameChanged = $course->name['en'] !== $request->name['en'] || $course->name['bn'] !== $request->name['bn'];
 
         if ($nameChanged) {
-            // Check if the category name already exists for the combination of languages
-            $exists = Category::where('id', '!=', $category->id)
-                              ->where(function ($query) use ($request) {
-                                  $query->whereJsonContains('name', ['en' => $request->name['en']])
-                                        ->orWhereJsonContains('name', ['bn' => $request->name['bn']]);
-                              })
-                              ->exists();
+            // Check if the course name already exists for the combination of languages
+            $exists = Course::where('id', '!=', $course->id)
+                            ->where(function ($query) use ($request) {
+                                $query->whereJsonContains('name', ['en' => $request->name['en']])
+                                      ->orWhereJsonContains('name', ['bn' => $request->name['bn']]);
+                            })
+                            ->exists();
 
             if ($exists) {
-                return redirect()->back()->withErrors(['name' => 'The category name must be unique across all languages.'])->withInput();
+                return redirect()->back()->withErrors(['name' => 'The course name must be unique across all languages.'])->withInput();
             }
         }
 
-        // Update the category
-        $category->update([
-            'name' => $request->name,
-            'is_visible' => $request->has('is_visible') ? $request->is_visible : $category->is_visible,
-            'position' => $request->position ?? $category->position,
-        ]);
+        // Update the course details
+        try {
+            $course->update([
+                'name' => $request->name,
+                'category_id' => $request->category_id,
+                'description' => $request->description,
+                'is_visible' => $request->has('is_visible') ? $request->is_visible : $course->is_visible,
+            ]);
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+            return redirect()->route('courses.index')->with('success', 'Course updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('courses.index')->with('error', 'Error: ' . $e->getMessage());
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.

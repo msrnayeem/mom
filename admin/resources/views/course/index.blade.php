@@ -41,8 +41,12 @@
                             @foreach ($courses as $index => $course)
                                 <tr class="align-middle">
                                     <td>{{ $index + 1 }}.</td>
-                                    <td>{{ $course->name['bn'] }}</td>
-                                    <td>{{ $course->name['en'] }}</td>
+                                    <td>
+                                        <a href="{{ route('courses.show', $course->id) }}">{{ $course->name['bn'] }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('courses.show', $course->id) }}">{{ $course->name['en'] }}</a>
+                                    </td>
                                     <td>{{ $course->category->name['en'] }}</td>
                                     <td>{{ $course->created_at }}</td>
                                     <td>

@@ -82,7 +82,7 @@
                 <li class="nav-item">
                     <a href="{{ route('courses.index') }}" class="nav-link">
                         <i class="nav-icon bi bi-patch-check-fill"></i>
-                        <p>Courses</p>
+                        <p>Course</p>
                     </a>
                 </li>
 

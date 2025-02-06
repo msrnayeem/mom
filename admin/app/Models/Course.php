@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ['name','description', 'is_visible', 'position'];
+    protected $fillable = ['name','description', 'category_id', 'is_visible', 'position'];
 
     // Cast JSON field to an array
     protected $casts = [
