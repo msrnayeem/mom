@@ -3,9 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourseController;
+
 Route::get('/', function () {
     if (auth()->check()) {
-        return redirect()->route('dashboard'); 
+        return redirect()->route('dashboard');
     }
     return view('auth.login');
 });
@@ -21,3 +24,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::resource('/categories', CategoryController::class);
+Route::resource('/courses', CourseController::class);
+

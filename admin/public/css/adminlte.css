@@ -440,6 +440,13 @@ th {
   border-style: solid;
   border-width: 0;
 }
+.custom-thead-font-size {
+    font-size: 17px;;
+}
+
+.custom-tbody-font-size{
+    font-size: 14px;
+}
 
 label {
   display: inline-block;
@@ -4434,6 +4441,7 @@ textarea.form-control-lg {
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
   box-shadow: var(--bs-card-box-shadow);
+  cursor: default;
 }
 .card > hr {
   margin-right: 0;

@@ -13,6 +13,12 @@ class Category extends Model
         'name' => 'array',
     ];
 
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d-m-Y');
+    }
+
+
     /**
      * Get the courses for the category.
      */

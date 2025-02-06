@@ -73,13 +73,19 @@
                 </li>
 
                 <li class="nav-header">DOCUMENTATIONS</li>
-
                 <li class="nav-item">
-                    <a href="./docs/license.html" class="nav-link">
+                    <a href="{{ route('categories.index') }}" class="nav-link">
                         <i class="nav-icon bi bi-patch-check-fill"></i>
-                        <p>License</p>
+                        <p>Category</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('courses.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-patch-check-fill"></i>
+                        <p>Courses</p>
+                    </a>
+                </li>
+
                 <li class="nav-header">MULTI LEVEL EXAMPLE</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -145,7 +151,7 @@
                         <p>Level 1</p>
                     </a>
                 </li>
-                
+
             </ul>
             <!--end::Sidebar Menu-->
         </nav>

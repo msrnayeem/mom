@@ -9,7 +9,7 @@
                     <i class="bi bi-list"></i>
                 </a>
             </li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item d-none d-md-block"><a href="/" class="nav-link">Home</a></li>
         </ul>
         <!--end::Start Navbar Links-->
         <!--begin::End Navbar Links-->
@@ -56,15 +56,16 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <img src="./assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow"
                         alt="User Image" />
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
+                    <span class="d-none d-md-inline capitalize">{{ auth()->user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <!--begin::User Image-->
                     <li class="user-header text-bg-primary">
                         <img src="./assets/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image" />
                         <p>
-                            Alexander Pierce - Web Developer
-                            <small>Member since Nov. 2023</small>
+                            <span class="capitalize">{{ auth()->user()->name }}</span> - Web Developer
+                            <small>Member since - {{ auth()->user()->created_at->format('M Y') }}
+                            </small>
                         </p>
                     </li>
                     <!--end::User Image-->

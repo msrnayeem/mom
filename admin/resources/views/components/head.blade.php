@@ -1,7 +1,7 @@
  <!--begin::Head-->
  <head>
     <title>@yield('title', 'MOM Dashboard')</title>
-    
+
     <!--begin::Fonts-->
     <link
       rel="stylesheet"
