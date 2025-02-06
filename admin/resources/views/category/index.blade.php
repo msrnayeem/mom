@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody class="custom-tbody-font-size">
-                            @foreach ($categories as $index => $category)
+                            @forelse ($categories as $index => $category)
                                 <tr class="align-middle">
                                     <td>{{ $index + 1 }}.</td>
                                     <td>{{ $category->name['bn'] }}</td>
@@ -55,7 +55,11 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center">No categories available yet.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
 

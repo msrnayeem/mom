@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\BatchController;
 
 
 Route::middleware('auth')->group(function () {
@@ -29,3 +30,4 @@ Route::get('/dashboard', function () {
 
 Route::resource('/categories', CategoryController::class);
 Route::resource('/courses', CourseController::class);
+Route::resource('/batches', BatchController::class);

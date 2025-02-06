@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Batch;
+use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BatchController extends Controller
@@ -12,7 +14,8 @@ class BatchController extends Controller
      */
     public function index()
     {
-        //
+        $batches = Batch::all();
+        return view('batch.index', compact('batches'));
     }
 
     /**
@@ -20,7 +23,10 @@ class BatchController extends Controller
      */
     public function create()
     {
-        //
+        $courses = Course::all();
+        $teachers = User::get();
+
+        return view('batch.create', compact('courses', 'teachers'));
     }
 
     /**
@@ -28,7 +34,42 @@ class BatchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'course_id' => 'required|exists:courses,id',
+            'teacher_id' => 'nullable|exists:users,id',
+            'batch_duration' => 'required|integer|min:1',
+            'fee' => 'required|numeric|min:0',
+            'capacity' => 'required|integer|min:1',
+            'start_date' => 'required|date|after_or_equal:today',
+            'end_date' => 'required|date|after:start_date',
+            'admission_end_date' => 'required|date|before:end_date',
+            'description' => 'nullable|string',
+        ]);
+
+        try {
+            // Create a new batch record
+            Batch::create([
+                'name' => $request->name,
+                'course_id' => $request->course_id,
+                'teacher_id' => $request->teacher_id,
+                'batch_duration' => $request->batch_duration,
+                'fee' => $request->fee,
+                'capacity' => $request->capacity,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'admission_end_date' => $request->admission_end_date,
+                'description' => $request->description,
+                'is_open' => true,  // Default to true
+            ]);
+
+            return redirect()->route('batches.index')->with('success', 'Batch created successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('batches.create')
+            ->withErrors(['success' => 'Error creating batch: ' . $e->getMessage()])
+            ->withInput();
+        }
     }
 
     /**
@@ -44,7 +85,11 @@ class BatchController extends Controller
      */
     public function edit(Batch $batch)
     {
-        //
+        $courses = Course::all();        // Get all courses
+        $teachers = User::all();      // Get all teachers
+
+        // Return the edit view with batch, courses, and teachers data
+        return view('batch.edit', compact('batch', 'courses', 'teachers'));
     }
 
     /**
@@ -52,7 +97,42 @@ class BatchController extends Controller
      */
     public function update(Request $request, Batch $batch)
     {
-        //
+        // Validate the incoming data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'course_id' => 'required|exists:courses,id',
+            'teacher_id' => 'nullable|exists:users,id',
+            'batch_duration' => 'required|numeric|min:1',
+            'fee' => 'required|numeric|min:100',
+            'capacity' => 'required|numeric|min:1',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'admission_end_date' => 'required|date',
+            'description' => 'nullable|string',
+        ]);
+
+        try {
+
+            $batch->update([
+                'name' => $request->name,
+                'course_id' => $request->course_id,
+                'teacher_id' => $request->teacher_id,
+                'duration' => $request->batch_duration,
+                'fee' => $request->fee,
+                'capacity' => $request->capacity,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'admission_end_date' => $request->admission_end_date,
+                'description' => $request->description,
+            ]);
+
+            // Redirect to batches index page with a success message
+            return redirect()->route('batches.index')->with('success', 'Batch updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('batches.create')
+            ->withErrors(['success' => 'Error creating batch: ' . $e->getMessage()])
+            ->withInput();
+        }
     }
 
     /**
@@ -60,6 +140,11 @@ class BatchController extends Controller
      */
     public function destroy(Batch $batch)
     {
-        //
+        try {
+            $batch->delete();
+            return redirect()->route('batches.index')->with('success', 'Batch deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('batches.index')->withErrors(['success' => 'Error deleting batch: ' . $e->getMessage()]);
+        }
     }
 }

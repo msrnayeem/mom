@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'MOM || Courses')
+@section('title', 'MOM || All Batches')
 
 @section('content')
 
@@ -9,9 +9,9 @@
             <!-- /.card -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <h3 class="card-title">Courses</h3>
-                    <a href="{{ route('courses.create') }}" class="btn btn-primary btn-sm float-end">
-                        Create Course
+                    <h3 class="card-title">Batches</h3>
+                    <a href="{{ route('batches.create') }}" class="btn btn-primary btn-sm float-end">
+                        Create Batch
                     </a>
                 </div>
                 <!-- /.card-header -->
@@ -29,30 +29,44 @@
                     <table class="table table-striped">
                         <thead class="custom-thead-font-size">
                             <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Course Name (BN)</th>
-                                <th>Course Name (EN)</th>
-                                <th>Category </th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Course</th>
+                                <th>Ustad</th>
+                                <th>Capacity</th>
+                                <th>Enrolled</th>
+                                <th>Admission End Date</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="custom-tbody-font-size">
-                            @forelse ($courses as $index => $course)
+                            @forelse ($batches as $index => $batch)
                                 <tr class="align-middle">
-                                    <td>{{ $index + 1 }}.</td>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $batch->name }}</td>
+                                    <td>{{ $batch->course->name['en'] }}</td>
+                                    <td>{{ $batch->teacher ? $batch->teacher->name : 'N/A' }}</td>
+                                    <td>{{ $batch->capacity }}</td>
+                                    <td>{{ $batch->enrolled }}</td>
+                                    <td> {{ $batch->admission_end_date }}</td>
+                                    <td>{{ $batch->start_date }}</td>
+                                    <td>{{ $batch->end_date }} </td>
                                     <td>
-                                        <a href="{{ route('courses.show', $course->id) }}">{{ $course->name['bn'] }}</a>
+                                        @if ($batch->is_open)
+                                            <span class="badge bg-success">Active</span>
+                                        @else
+                                            <span class="badge bg-danger">Inactive</span>
+                                        @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('courses.show', $course->id) }}">{{ $course->name['en'] }}</a>
-                                    </td>
-                                    <td>{{ $course->category->name['en'] }}</td>
-                                    <td>{{ $course->created_at }}</td>
-                                    <td>
-                                        <a href="{{ route('courses.edit', $course->id) }}"
+                                        <a href="{{ route('batches.show', $batch->id) }}"
+                                            class="btn btn-info btn-sm">View</a>
+                                        <a href="{{ route('batches.edit', $batch->id) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('courses.destroy', $course->id) }}" method="POST"
+                                        <form action="{{ route('batches.destroy', $batch->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -62,10 +76,9 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr>
-                                    <td colspan="6" class="text-center">No courses found</td>
-                                </tr>
+                                <div class="alert alert-warning">No batches found.</div>
                             @endforelse
+
                         </tbody>
                     </table>
 

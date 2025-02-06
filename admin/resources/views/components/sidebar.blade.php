@@ -86,6 +86,13 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('batches.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-patch-check-fill"></i>
+                        <p>Batch</p>
+                    </a>
+                </li>
+
                 <li class="nav-header">MULTI LEVEL EXAMPLE</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
