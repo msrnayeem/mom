@@ -8,9 +8,6 @@ use App\Http\Controllers\Admin\BatchController;
 
 
 // Authentication & Dashboard Routes
-Route::get('/', function () {
-    return auth()->check() ? redirect()->route('admin.dashboard') : view('admin.auth.login');
-});
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
