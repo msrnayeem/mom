@@ -105,9 +105,8 @@
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                        data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                        aria-selected="false">
+                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                                        type="button" role="tab" aria-controls="profile" aria-selected="false">
                                         <i class="fa-light fa-list"></i>
                                         <span> List</span>
                                     </button>
@@ -118,20 +117,23 @@
                     </div>
                     <!-- filter top-area end -->
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel"
-                            aria-labelledby="home-tab">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row g-5 mt--30">
 
-                                @for ($i = 0; $i < 15; $i++)
+                                @forelse($courses as $course)
+                                    @php
+                                        $activeBatch = $course->activeBatches->first(); // Get the first active batch if exists
+                                    @endphp
+
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                         <!-- rts single course -->
                                         <div class="rts-single-course">
-                                            <a href="{{ route('course.details') }}" class="thumbnail">
+                                            <a href="" class="thumbnail">
                                                 <img src="assets/images/course/01.jpg" alt="course">
                                             </a>
                                             <div class="tags-area-wrapper">
                                                 <div class="single-tag">
-                                                    <span>Web Development</span>
+                                                    <span>{{ $course->category->name['en'] }}</span>
                                                 </div>
                                             </div>
                                             <div class="lesson-studente">
@@ -141,13 +143,30 @@
                                                 </div>
                                                 <div class="lesson">
                                                     <i class="fa-light fa-user-group"></i>
-                                                    <span>54 Students</span>
+                                                    <span>
+                                                        <!-- Get the enrolled count from the active batches -->
+                                                        @php
+                                                            $totalEnrolled = 0;
+                                                            foreach ($course->activeBatches as $batch) {
+                                                                $totalEnrolled += $batch->enrolled; // Summing enrolled count from all active batches
+                                                            }
+                                                        @endphp
+                                                        {{ $totalEnrolled }}
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <a href="{{ route('course.details') }}">
-                                                <h5 class="title">The Complete Web Developer in
-                                                    2023: Zero to Mastery</h5>
+
+                                            <a
+                                                href="{{ route('course.details', ['course' => $course, 'batch' => $course->activeBatches->first() ?? null]) }}">
+                                                <h5 class="title">{{ $course->name['en'] }} -
+                                                    @if ($activeBatch)
+                                                        {{ $activeBatch->name }}
+                                                    @else
+                                                        No Active Batch
+                                                    @endif
+                                                </h5>
                                             </a>
+
                                             <p class="teacher">Dr. Angela Yu</p>
                                             <div class="rating-and-price">
                                                 <div class="rating-area">
@@ -174,7 +193,12 @@
                                         </div>
                                         <!-- rts single course end -->
                                     </div>
-                                @endfor
+                                @empty
+                                    <div class="rts-single"
+                                        style="text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                                        <h4>No Course Found</h4>
+                                    </div>
+                                @endforelse
                             </div>
                             <div class="row mt--30">
                                 <div class="col-lg-12">
@@ -196,16 +220,16 @@
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row g-5 mt--0">
                                 <div class="col-lg-12">
-                                    @for ($i = 0; $i < 15; $i++)
+                                    @forelse($courses as $course)
                                         <!-- rts single course -->
                                         <div class="rts-single-course course-list">
-                                            <a href="{{ route('course.details') }}" class="thumbnail">
+                                            <a href="" class="thumbnail">
                                                 <img src="assets/images/course/11.jpg" alt="course">
                                             </a>
                                             <div class="information-inner">
                                                 <div class="tags-area-wrapper">
                                                     <div class="single-tag">
-                                                        <span>Web Development</span>
+                                                        <span>{{ $course->category->name['en'] }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="lesson-studente">
@@ -215,13 +239,30 @@
                                                     </div>
                                                     <div class="lesson">
                                                         <i class="fa-light fa-user-group"></i>
-                                                        <span>54 Students</span>
+                                                        <span>
+                                                            <!-- Get the enrolled count from the active batches -->
+                                                            @php
+                                                                $totalEnrolled = 0;
+                                                                foreach ($course->activeBatches as $batch) {
+                                                                    $totalEnrolled += $batch->enrolled; // Summing enrolled count from all active batches
+                                                                }
+                                                            @endphp
+                                                            {{ $totalEnrolled }}
+                                                        </span>
                                                     </div>
                                                 </div>
-                                                <a href="{{ route('course.details') }}">
-                                                    <h5 class="title">The Complete Web Developer in
-                                                        2023: Zero to Mastery</h5>
+
+                                                <a
+                                                    href="{{ route('course.details', ['course' => $course, 'batch' => $course->activeBatches->first() ?? null]) }}">
+                                                    <h5 class="title">{{ $course->name['en'] }} -
+                                                        @if ($activeBatch)
+                                                            {{ $activeBatch->name }}
+                                                        @else
+                                                            No Active Batch
+                                                        @endif
+                                                    </h5>
                                                 </a>
+
                                                 <p class="disc">Discover a world of knowledge and learning opportunities
                                                 </p>
                                                 <p class="teacher">Dr. Angela Yu</p>
@@ -251,7 +292,12 @@
 
                                         </div>
                                         <!-- rts single course end -->
-                                    @endfor
+                                    @empty
+                                        <div class="rts-single"
+                                            style="text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                                            <h4>No Course Found</h4>
+                                        </div>
+                                    @endforelse
                                 </div>
                             </div>
                             <div class="row mt--30">

@@ -3,6 +3,7 @@
 @section('title', 'MOM || Course Details')
 
 @section('content')
+
     <!-- course details breadcrumb -->
     <div class="course-details-breadcrumb-2 bg_image rts-section-gap">
         <div class="container">
@@ -772,17 +773,23 @@
                     <div class="right-course-details mt--0">
                         <!-- single course-sidebar -->
                         <div class="course-side-bar">
+                            @if (session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @endif
                             <div class="price-area">
-                                <h3 class="title">$79.99</h3>
-                                <h4 class="none">$79.99</h4>
-                                <span class="discount">-50%</span>
+                                <h3 class="title">BDT {{ $batch->fee }}</h3>
+                                {{-- <h4 class="none">$79.99</h4>
+                                <span class="discount">-50%</span> --}}
                             </div>
                             <div class="clock-area">
                                 <i class="fa-light fa-clock"></i>
                                 <span>2 Day left at this price!</span>
                             </div>
-                            <a href="#" class="rts-btn btn-primary">Add To Cart</a>
-                            <a href="#" class="rts-btn btn-border">Buy Now</a>
+                            <form action="{{ route('course.enroll', $batch->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="rts-btn btn-primary">Enroll Now</button>
+                            </form>
+                            {{-- <a href="#" class="rts-btn btn-border">Buy Now</a> --}}
 
                             <div class="what-includes">
                                 <span class="m">30-Day Money-Back Guarantee</span>
@@ -802,16 +809,16 @@
                                         <span>Duration</span>
                                     </div>
                                     <div class="right">
-                                        <span>6 hours 56 minutes</span>
+                                        <span>{{ str_pad($batch->batch_duration, 2, '0', STR_PAD_LEFT) }} Month</span>
                                     </div>
                                 </div>
                                 <div class="single-include">
                                     <div class="left">
                                         <i class="fa-regular fa-floppy-disk"></i>
-                                        <span>Subject</span>
+                                        <span>Course</span>
                                     </div>
                                     <div class="right">
-                                        <span>Web Development</span>
+                                        <span>{{ $course->name['en'] }}</span>
                                     </div>
                                 </div>
                                 <div class="single-include">

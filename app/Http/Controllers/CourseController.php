@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
+use App\Models\Batch;
 
 class CourseController extends Controller
 {
@@ -13,60 +14,34 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('course.index');
+        $courses = Course::with('activeBatches')->get();
+
+        return view('course.index', compact('courses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function courseDetails(Course $course, Batch $batch = null)
     {
-        //
-    }
+        // If a batch is provided, ensure it belongs to the given course
+        if ($batch && $batch->course_id !== $course->id) {
+            return redirect()->route('courses.index')->with('error', 'Invalid batch selection.');
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCourseRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCourseRequest $request, Course $course)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Course $course)
-    {
-        //
+        return view('course.show', compact('course', 'batch'));
     }
 
 
-    public function courseDetails()
+
+    public function batchDetails(Batch $batch)
     {
-        return view('course.show');
+
+        // Ensure the batch is active
+        if ($batch->admission_end_date < now()) {
+            return redirect()->route('courses.index')->with('error', 'This batch is no longer accepting students.');
+        }
+
+        // Fetch course related to the batch
+       // $course = $batch->course;  // Assuming 'course' is defined as a relationship in the Batch model
+
+        return view('course.batch_show', compact('batch'));
     }
 }
