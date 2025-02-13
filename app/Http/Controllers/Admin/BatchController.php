@@ -26,7 +26,7 @@ class BatchController extends Controller
     public function create()
     {
         $courses = Course::all();
-        $teachers = User::get();
+        $teachers = User::where('role', 'teacher')->get();
 
         return view('admin.batch.create', compact('courses', 'teachers'));
     }
@@ -88,7 +88,7 @@ class BatchController extends Controller
     public function edit(Batch $batch)
     {
         $courses = Course::all();        // Get all courses
-        $teachers = User::all();      // Get all teachers
+        $teachers = User::where('role', 'teacher')->get();      // Get all teachers
 
         // Return the edit view with batch, courses, and teachers data
         return view('admin.batch.edit', compact('batch', 'courses', 'teachers'));

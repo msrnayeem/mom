@@ -50,5 +50,8 @@ class DatabaseSeeder extends Seeder
                 'role' => 'student',
             ]);
         }
+
+        //run category seeder
+        $this->call(CategorySeeder::class);
     }
 }
