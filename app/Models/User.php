@@ -21,13 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -45,4 +41,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function getStudentDetailsAttribute()
+    {
+        return $this->role === 'student' ? $this->hasOne(Student::class, 'user_id', 'id')->first() : null;
+    }
+
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+
 }

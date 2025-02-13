@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class enrollment extends Model
+class Enrollment extends Model
 {
     protected $fillable = [
         'user_id',
@@ -14,10 +14,12 @@ class enrollment extends Model
         'remarks',
     ];
 
-    public function studens()
+    public function student()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+
 
     public function batch()
     {

@@ -71,8 +71,19 @@
 
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.teachers.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-patch-check-fill"></i>
+                        <p>Teachers</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.students.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-patch-check-fill"></i>
+                        <p>Students</p>
+                    </a>
+                </li>
 
-                <li class="nav-header">DOCUMENTATIONS</li>
                 <li class="nav-item">
                     <a href="{{ route('admin.categories.index') }}" class="nav-link">
                         <i class="nav-icon bi bi-patch-check-fill"></i>

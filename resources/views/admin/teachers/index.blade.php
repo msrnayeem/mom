@@ -1,17 +1,17 @@
 @extends('admin.layouts.app')
 
-@section('title', 'MOM || All Batches')
+@section('title', 'MOM || Teachers')
 
 @section('content')
 
     <div class="row">
         <div class="col-md-12">
             <!-- /.card -->
-            <div class="card mb-4">
+            <div class="card mb-2">
                 <div class="card-header">
-                    <h3 class="card-title">Batches</h3>
-                    <a href="{{ route('admin.batches.create') }}" class="btn btn-primary btn-sm float-end">
-                        Create Batch
+                    <h3 class="card-title">Registered Teacher</h3>
+                    <a href="{{ route('admin.teachers.create') }}" class="btn btn-primary btn-sm float-end">
+                        New Teacher
                     </a>
                 </div>
                 <!-- /.card-header -->
@@ -29,45 +29,24 @@
                     <table class="table table-striped">
                         <thead class="custom-thead-font-size">
                             <tr>
-                                <th>#</th>
+                                <th style="width: 10px">#</th>
                                 <th>Name</th>
-                                <th>Course</th>
-                                <th>Ustad</th>
-                                <th>Capacity</th>
-                                <th>Enrolled</th>
-                                <th>Admission End Date</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th>Email</th>
+                                <th>Joined At</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody class="custom-tbody-font-size">
-                            @forelse ($batches as $index => $batch)
+                            @forelse ($teachers as $index => $teacher)
                                 <tr class="align-middle">
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $batch->name }}</td>
-                                    <td>{{ $batch->course->name['en'] }}</td>
-                                    <td>{{ $batch->teacher ? $batch->teacher->name : 'N/A' }}</td>
-                                    <td>{{ $batch->capacity }}</td>
-                                    <td>{{ $batch->enrolled }} (<a
-                                            href="{{ route('admin.batches.students', $batch) }}">View</a>)</td>
-                                    <td> {{ $batch->admission_end_date }}</td>
-                                    <td>{{ $batch->start_date }}</td>
-                                    <td>{{ $batch->end_date }} </td>
+                                    <td>{{ $index + 1 }}.</td>
+                                    <td>{{ $teacher->name }}</td>
+                                    <td>{{ $teacher->email }}</td>
+                                    <td>{{ $teacher->created_at }}</td>
                                     <td>
-                                        @if ($batch->is_open)
-                                            <span class="badge bg-success">Active</span>
-                                        @else
-                                            <span class="badge bg-danger">Inactive</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('admin.batches.show', $batch->id) }}"
-                                            class="btn btn-info btn-sm">View</a>
-                                        <a href="{{ route('admin.batches.edit', $batch->id) }}"
+                                        <a href="{{ route('admin.teachers.edit', $teacher->id) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('admin.batches.destroy', $batch->id) }}" method="POST"
+                                        <form action="{{ route('admin.teachers.destroy', $teacher->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -77,9 +56,10 @@
                                     </td>
                                 </tr>
                             @empty
-                                <div class="alert alert-warning">No batches found.</div>
+                                <tr>
+                                    <td colspan="5" class="text-center">No teacher available yet.</td>
+                                </tr>
                             @endforelse
-
                         </tbody>
                     </table>
 

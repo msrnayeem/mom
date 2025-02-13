@@ -64,7 +64,8 @@
                     <li class="user-header text-bg-primary">
                         <img src="./assets/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image" />
                         <p>
-                            <span class="capitalize">{{ auth()->user()->name }}</span> - Web Developer
+                            <span class="capitalize">{{ auth()->user()->name }}</span> - <span
+                                class="capitalize">{{ auth()->user()->role }}</span>
                             <small>Member since - {{ auth()->user()->created_at->format('M Y') }}
                             </small>
                         </p>

@@ -21,6 +21,7 @@ class CourseController extends Controller
 
     public function courseDetails(Course $course, Batch $batch = null)
     {
+        //dd($course, $batch);
         // If a batch is provided, ensure it belongs to the given course
         if ($batch && $batch->course_id !== $course->id) {
             return redirect()->route('courses.index')->with('error', 'Invalid batch selection.');

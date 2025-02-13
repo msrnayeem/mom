@@ -149,4 +149,21 @@ class BatchController extends Controller
             return redirect()->route('admin.batches.index')->withErrors(['success' => 'Error deleting batch: ' . $e->getMessage()]);
         }
     }
+
+    /**
+     * Get all students in a batch
+     */
+    public function studentsInBatch(Batch $batch)
+    {
+        $batch = Batch::with('enrollments.student')->find($batch->id);
+
+        // Extract students
+        $students = $batch->enrollments->map(function ($enrollment) {
+            return $enrollment->student;
+        })->filter(); // Filter out any null values
+
+        return view('admin.batch.students', compact('batch', 'students'));
+    }
+
+
 }
