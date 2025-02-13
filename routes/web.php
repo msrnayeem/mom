@@ -8,49 +8,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
-Route::get('/create-user', function () {
-    // Create an Admin user
-    // $admin = User::create([
-    //     'name' => 'Admin 1',
-    //     'email' => 'admin11@example.com',
-    //     'password' => Hash::make('adminpassword'),  // Hash password
-    //     'role' => 'admin',
-    // ]);
-
-    // // Create a Teacher user
-    // $teacher = User::create([
-    //     'name' => 'Teacher 1',
-    //     'email' => 'teacher1@example.com',
-    //     'password' => Hash::make('teacherpassword'),  // Hash password
-    //     'role' => 'teacher',
-    // ]);
-
-    // Create a Student user
-    for($i = 2; $i <= 10; $i++) {
-        $student = User::create([
-            'name' => 'Student ' . $i,
-            'email' => 'student' . $i . '@example.com',
-            'password' => Hash::make('studentpassword'),  // Hash password
-            'role' => 'student',
-        ]);
-    }
-    // $student = User::create([
-    //     'name' => 'Student 1',
-    //     'email' => 'student1@example.com',
-    //     'password' => Hash::make('studentpassword'),  // Hash password
-    //     'role' => 'student',
-    // ]);
-
-    return "Admin, Teacher, and Student users created with";
-});
 
 Route::get('/', function () {
     return view('landing');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

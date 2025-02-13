@@ -3,10 +3,15 @@
 @section('title', 'MOM || New Batch')
 
 @section('content')
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- include summernote css/js-->
+
+    <link href="{{ asset('summernote/summernote-bs5.css') }}" rel="stylesheet">
+    <script src="{{ asset('summernote/summernote-bs5.js') }}"></script>
     <div class="row">
         <div class="col-md-12">
             <!-- /.card -->
@@ -129,16 +134,26 @@
             <!-- /.card -->
         </div>
     </div>
+
+
     <script>
         // Initialize Summernote for description field
         $(document).ready(function() {
-            $('#description').summernote({
-                height: 200, // Customize the height
-                codemirror: {
-                    theme: 'monokai'
-                }
-            });
 
+            $('#description').summernote({
+                height: 300, // Height of the editor
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']], // Enable table button
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
             // Function to update End Date and Admission End Date
             function updateDates() {
                 var startDate = $('#start_date').val();
