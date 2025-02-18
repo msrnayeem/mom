@@ -4,17 +4,16 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Course;
-//import course factory
-use Database\Factories\CourseFactory;
+use App\Models\User;
+use Database\Factories\UserFactory;
 
-class CourseSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Course::factory()->count(5)->create();
+        User::factory()->count(20)->create();
     }
 }

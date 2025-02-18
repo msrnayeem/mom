@@ -20,9 +20,8 @@ Route::get('/admin/dashboard', function () {
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('/categories', CategoryController::class);
     Route::resource('/courses', CourseController::class);
-    Route::resource('/batches', BatchController::class);
 
-    Route::get('/student-in-batch/{batch}', [BatchController::class, 'studentsInBatch'])->name('batches.students');
+    Route::get('/student-in-course/{course}', [CourseController::class, 'studentsInCourse'])->name('courses.students');
 
     Route::resource('students', StudentController::class)->except(['create', 'store']);
     Route::resource('teachers', TeacherController::class);

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'MOM || Courses')
+@section('title', 'MOM || All Courses')
 
 @section('content')
 
@@ -29,29 +29,46 @@
                     <table class="table table-striped">
                         <thead class="custom-thead-font-size">
                             <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Course Name (BN)</th>
-                                <th>Course Name (EN)</th>
-                                <th>Category </th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Teacher</th>
+                                <th>Duration</th>
+                                <th>Fee</th>
+                                <th>Capacity</th>
+                                <th>Enrolled</th>
+                                <th>Admission End Date</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="custom-tbody-font-size">
                             @forelse ($courses as $index => $course)
                                 <tr class="align-middle">
-                                    <td>{{ $index + 1 }}.</td>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $course->name ?? $course->name }}</td>
+                                    <td>{{ $course->category->name['en'] ?? 'N/A' }}</td>
+                                    <td>{{ $course->teacher ? $course->teacher->name : 'N/A' }}</td>
+                                    <td>{{ $course->course_duration }}</td>
+                                    <td>{{ $course->fee }}</td>
+                                    <td>{{ $course->capacity }}</td>
+                                    <td>{{ $course->enrolled }} (<a
+                                            href="{{ route('admin.courses.students', $course) }}">View</a>)</td>
+                                    <td>{{ $course->admission_end_date }}</td>
+                                    <td>{{ $course->start_date }}</td>
+                                    <td>{{ $course->end_date }}</td>
                                     <td>
-                                        <a
-                                            href="{{ route('admin.courses.show', $course->id) }}">{{ $course->name['bn'] }}</a>
+                                        @if ($course->is_open)
+                                            <span class="badge bg-success">Active</span>
+                                        @else
+                                            <span class="badge bg-danger">Inactive</span>
+                                        @endif
                                     </td>
                                     <td>
-                                        <a
-                                            href="{{ route('admin.courses.show', $course->id) }}">{{ $course->name['en'] }}</a>
-                                    </td>
-                                    <td>{{ $course->category->name['en'] }}</td>
-                                    <td>{{ $course->created_at }}</td>
-                                    <td>
+                                        <a href="{{ route('admin.courses.show', $course->id) }}"
+                                            class="btn btn-info btn-sm">View</a>
                                         <a href="{{ route('admin.courses.edit', $course->id) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
                                         <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST"
@@ -65,13 +82,15 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center">No courses found</td>
+                                    <td colspan="13">
+                                        <div class="alert alert-warning">No courses found.</div>
+                                    </td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
-
                 </div>
+
                 <!-- /.card-body -->
 
                 <div class="card-footer clearfix">

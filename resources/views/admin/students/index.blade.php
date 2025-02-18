@@ -30,6 +30,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Joined At</th>
+                                <th>Phone</th> <!-- Add a column for phone -->
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -37,29 +38,37 @@
                             @forelse ($students as $index => $student)
                                 <tr class="align-middle">
                                     <td>{{ $index + 1 }}.</td>
-                                    <td>{{ $student->name }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.students.show', $student->id) }}">
+                                            {{ $student->name }}
+                                        </a>
+                                    </td>
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->created_at }}</td>
                                     <td>
-                                        <a href="{{ route('admin.students.edit', $student->id) }}"
-                                            class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST"
-                                            class="d-inline">
+                                        @if ($student->student_details && $student->student_details->phone)
+                                            {{ $student->student_details->phone }}
+                                        @else
+                                            Not Available
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('admin.students.edit', $student->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure?')">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-center">No students available yet.</td>
+                                    <td colspan="6" class="text-center">No students available yet.</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
-
+                
                 </div>
                 <!-- /.card-body -->
 

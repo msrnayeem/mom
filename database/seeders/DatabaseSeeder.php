@@ -14,13 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
+        
         // Create a Admin
         for($i = 1; $i <= 4; $i++) {
             User::create([
@@ -32,7 +26,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // Create a teacher
-        for($i = 1; $i <= 3; $i++) {
+        for($i = 4; $i <= 7; $i++) {
             User::create([
                 'name' => 'teacher ' . $i,
                 'email' => 'teacher' . $i . '@example.com',
@@ -41,17 +35,9 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Create a Student user
-        for($i = 1; $i <= 20; $i++) {
-            User::create([
-                'name' => 'Student ' . $i,
-                'email' => 'student' . $i . '@example.com',
-                'password' => Hash::make('password'),  // Hash password
-                'role' => 'student',
-            ]);
-        }
-
-        //run category seeder
+        $this->call(UserSeeder::class);
+        
         $this->call(CategorySeeder::class);
+        $this->call(CourseSeeder::class);
     }
 }

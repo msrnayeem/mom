@@ -21,8 +21,8 @@ class Enrollment extends Model
 
 
 
-    public function batch()
+    public function course()
     {
-        return $this->belongsTo(Batch::class);
+        return $this->belongsTo(Course::class);
     }
 }

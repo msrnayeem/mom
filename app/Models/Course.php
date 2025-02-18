@@ -3,15 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Model
 {
-    //guarded
-    public $guared = [];
+    use HasFactory;
+    protected $fillable = [
+        'name',
+        'description',
+        'category_id',
+        'is_visible',
+        'is_open',
+        'teacher_id',
+        'course_duration',
+        'fee',
+        'capacity',
+        'enrolled',
+        'admission_end_date',
+        'start_date',
+        'end_date',
+    ];
 
     // Cast JSON field to an array
     protected $casts = [
-        'name' => 'array',
         'description' => 'array',
     ];
 

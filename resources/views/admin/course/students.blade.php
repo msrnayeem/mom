@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'MOM || Students In Batch')
+@section('title', 'MOM || Students In Course')
 
 @section('content')
 
@@ -9,7 +9,7 @@
             <!-- /.card -->
             <div class="card mb-2">
                 <div class="card-header">
-                    <h3 class="card-title">Student in Batch - {{ $batch->name }}</h3>
+                    <h3 class="card-title">Student in Course - {{ $course->name }}</h3>
                 </div>
                 <!-- /.card-header -->
 
@@ -36,7 +36,7 @@
                             </tr>
                         </thead>
                         <tbody class="custom-tbody-font-size">
-                            @forelse ($batch->enrollments as $index => $enrollment)
+                            @forelse ($course->enrollments as $index => $enrollment)
                                 @if ($enrollment->student)
                                     <tr class="align-middle">
                                         <td>{{ $index + 1 }}.</td>
