@@ -33,12 +33,10 @@ class AuthenticatedSessionController extends Controller
         // Redirect to the intended URL or to the role-specific dashboard
         if (auth()->user()->role === 'admin') {
             return redirect()->intended(route('admin.dashboard'));  // Admin's dashboard
-        } elseif (auth()->user()->role === 'teacher') {
-            return redirect()->intended(route('teacher.dashboard'));  // Teacher's dashboard
         } elseif (auth()->user()->role === 'student') {
             return redirect(session('url.intended', route('student.dashboard')));
         }
-        dd("defailt");
+        
         // Default fallback if role is not matched
         return redirect()->intended('/');  // Home page or another default route
     }

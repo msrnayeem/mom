@@ -11,7 +11,7 @@ class Student extends Model
 
     protected $fillable = [
         'phone',
-        'whatsap',
+        'whatsapp',
         'address',
         'user_id',
     ];

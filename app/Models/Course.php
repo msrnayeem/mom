@@ -68,4 +68,9 @@ class Course extends Model
     {
         return $this->is_open;
     }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'enrollments', 'course_id', 'user_id');
+    }
 }

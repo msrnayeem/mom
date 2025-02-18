@@ -16,7 +16,7 @@
                                 <ul class="rts-dropdown-menu switcher-language">
                                     <li class="has-child-menu">
                                         <a href="#">
-                                            <img class="left-image" src="assets/images/flag-01.svg"
+                                            <img class="left-image" src="{{asset('assets/images/flag-01.svg')}}"
                                                 alt="Language Images">
                                             <span class="menu-item">English</span>
                                             <i class="fa-regular fa-chevron-down"></i>
@@ -24,21 +24,21 @@
                                         <ul class="sub-menu">
                                             <li>
                                                 <a href="#">
-                                                    <img class="left-image" src="assets/images/flag-03.svg"
+                                                    <img class="left-image" src="{{asset('assets/images/flag-03.svg')}}"
                                                         alt="Language Images">
                                                     <span class="menu-item">Deutsch</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <img class="left-image" src="assets/images/flag-02.svg"
+                                                    <img class="left-image" src="{{asset('assets/images/flag-02.svg')}}"
                                                         alt="Language Images">
                                                     <span class="menu-item">Portuguese</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <img class="left-image" src="assets/images/flag-04.svg"
+                                                    <img class="left-image" src="{{asset('assets/images/flag-04.svg')}}"
                                                         alt="Language Images">
                                                     <span class="menu-item">Russian</span>
                                                 </a>
@@ -126,9 +126,9 @@
                                                     <li><a href="index-ten.html">Business coach</a></li>
                                                 </ul>
                                                 <div class="absolute-image-shape shape-image">
-                                                    <img class=" shape one" src="assets/images/nav/02.png"
+                                                    <img class=" shape one" src="{{asset('assets/images/nav/02.png')}}"
                                                         data-speed="0.04" data-revert="true" alt="nav">
-                                                    <img class=" shape two" src="assets/images/nav/03.png"
+                                                    <img class=" shape two" src="{{asset('assets/images/nav/03.png')}}"
                                                         data-speed="0.04" alt="nav">
                                                 </div>
                                                 <div class="nav-mega-image">
@@ -350,19 +350,18 @@
                         </div>
                         <div class="buttons-area">
                             @guest
-                            <!-- Display these buttons if the user is not authenticated -->
-                            <a href="{{ route('login') }}" class="rts-btn btn-border">Log In</a>
-                            <a href="{{ route('register') }}" class="rts-btn btn-primary">Sign Up</a>
-                        @endguest
-
-                        @auth
-                            <!-- Display this button if the user is authenticated -->
-                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                                @csrf
-                                <button type="submit" class="rts-btn btn-border">Log Out</button>
-                            </form>
-                        @endauth
-
+                                <!-- Display these buttons if the user is not authenticated -->
+                                <a href="{{ route('login') }}" class="rts-btn btn-border">Log In</a>
+                                <a href="{{ route('register') }}" class="rts-btn btn-primary">Sign Up</a>
+                            @endguest
+                            
+                            @auth
+                                <!-- Display this button if the user is authenticated -->
+                                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="rts-btn btn-border">Log Out</button>
+                                </form>
+                            @endauth                        
                         </div>
                         <div class="menu-btn" id="menu-btn">
                             <svg width="20" height="16" viewBox="0 0 20 16" fill="none"

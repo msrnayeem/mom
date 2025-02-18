@@ -48,7 +48,7 @@
                                     <strong>Phone:</strong> {{ $student->student_details->phone }}
                                 </li>
                                 <li class="list-group-item">
-                                    <strong>WhatsApp:</strong> {{ $student->student_details->whatsap }}
+                                    <strong>WhatsApp:</strong> {{ $student->student_details->whatsapp }}
                                 </li>
                                 <li class="list-group-item">
                                     <strong>Address:</strong> {{ $student->student_details->address }}

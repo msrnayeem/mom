@@ -17,7 +17,7 @@ class StudentFactory extends Factory
         return [
             'user_id' => null, // Set dynamically in UserFactory
             'phone' => $this->faker->phoneNumber(),
-            'whatsap' => $this->faker->phoneNumber(),
+            'whatsapp' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
         ];
     }

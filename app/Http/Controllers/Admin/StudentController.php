@@ -21,8 +21,6 @@ class StudentController extends Controller
         return view('admin.students.index', compact('students'));
     }
 
-
-
     /**
      * Display the specified resource.
      */
@@ -69,10 +67,10 @@ class StudentController extends Controller
         $student->update($updateData);
 
         // Update additional student details only if any additional fields are provided
-        if ($student->role === 'student' && ($request->filled('phone') || $request->filled('whatsap') || $request->filled('address'))) {
+        if ($student->role === 'student' && ($request->filled('phone') || $request->filled('whatsapp') || $request->filled('address'))) {
             $additionalRules = [
                 'phone'   => 'nullable|string|max:255',
-                'whatsap' => 'nullable|string|max:255',
+                'whatsapp' => 'nullable|string|max:255',
                 'address' => 'nullable|string|max:255',
             ];
 
@@ -81,14 +79,14 @@ class StudentController extends Controller
             if ($student->student_details) {
                 $student->student_details->update([
                     'phone'   => $request->phone,
-                    'whatsap' => $request->whatsap,
+                    'whatsapp' => $request->whatsapp,
                     'address' => $request->address,
                 ]);
             } else {
-                \App\Models\Student::create([
+                Student::create([
                     'user_id' => $student->id,
                     'phone'   => $request->phone,
-                    'whatsap' => $request->whatsap,
+                    'whatsapp' => $request->whatsapp,
                     'address' => $request->address,
                 ]);
             }

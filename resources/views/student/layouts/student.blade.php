@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-@include('front_components.head')
+@include('student.components.head')
 
 <body>
 
-    @include('front_components.header')
+    @include('student.components.header')
 
     @yield('content')
 
-    @include('front_components.footer')
+   
 
-    {{-- @include('front_components.cart') --}}
+    {{-- @include('student.components.cart') --}}
 
     <!-- rts backto top start -->
     <div class="progress-wrap">
@@ -38,7 +38,7 @@
     <div id="anywhere-home" class="">
     </div>
 
-    @include('front_components.js')
+    @include('student.components.js')
 
 
 </body>

@@ -75,10 +75,10 @@
                             @enderror
                         </div>
                         <div class="col-md-4">
-                            <label for="whatsap" class="form-label">WhatsApp</label>
-                            <input type="text" name="whatsap" id="whatsap" class="form-control"
-                                   value="{{ old('whatsap', $student->student_details->whatsap) }}" placeholder="Enter WhatsApp number">
-                            @error('whatsap')
+                            <label for="whatsapp" class="form-label">whatsappp</label>
+                            <input type="text" name="whatsapp" id="whatsapp" class="form-control"
+                                   value="{{ old('whatsapp', $student->student_details->whatsapp) }}" placeholder="Enter whatsappp number">
+                            @error('whatsapp')
                                 <div class="text-danger small">{{ $message }}</div>
                             @enderror
                         </div>
