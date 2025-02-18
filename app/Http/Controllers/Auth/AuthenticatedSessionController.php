@@ -30,17 +30,19 @@ class AuthenticatedSessionController extends Controller
         // Regenerate session to prevent session fixation
         $request->session()->regenerate();
 
-        // Check the user's role and redirect accordingly
+        // Redirect to the intended URL or to the role-specific dashboard
         if (auth()->user()->role === 'admin') {
-            return redirect()->route('admin.dashboard');  // Admin's dashboard
+            return redirect()->intended(route('admin.dashboard'));  // Admin's dashboard
         } elseif (auth()->user()->role === 'teacher') {
-            return redirect()->route('teacher.dashboard');  // Teacher's dashboard
+            return redirect()->intended(route('teacher.dashboard'));  // Teacher's dashboard
         } elseif (auth()->user()->role === 'student') {
-            return redirect()->route('student.dashboard');  // Student's dashboard
+            return redirect(session('url.intended', route('student.dashboard')));
         }
-
-
+        dd("defailt");
+        // Default fallback if role is not matched
+        return redirect()->intended('/');  // Home page or another default route
     }
+
 
     /**
      * Destroy an authenticated session.

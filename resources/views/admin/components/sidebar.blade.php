@@ -104,7 +104,7 @@
                     </a>
                 </li>
 
-                <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+                {{-- <li class="nav-header">MULTI LEVEL EXAMPLE</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-circle-fill"></i>
@@ -168,7 +168,7 @@
                         <i class="nav-icon bi bi-circle-fill"></i>
                         <p>Level 1</p>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
             <!--end::Sidebar Menu-->

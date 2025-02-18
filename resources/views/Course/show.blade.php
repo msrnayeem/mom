@@ -785,6 +785,7 @@
                                 <i class="fa-light fa-clock"></i>
                                 <span>2 Day left at this price!</span>
                             </div>
+                            {{ auth()->user()->name ?? 'not' }}
                             <form action="{{ route('course.enroll', $batch->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="rts-btn btn-primary">Enroll Now</button>

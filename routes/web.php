@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
 
-Route::get('/', function () {
-    return view('landing');
-});
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,3 +27,6 @@ Route::post('/course/{batch}/enroll', [EnrollmentController::class, 'store'])->n
 
 Route::get('/course/batch/{batch}', [CourseController::class, 'batchDetails'])->name('course.batch.show');
 
+Route::get('/', function () {
+    return view('landing');
+})->name('student.dashboard');

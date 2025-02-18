@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('enrollments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('batch_id')->constrained('batches')->onDelete('cascade');
+            $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
             $table->boolean('payment_status')->default(false); // False means not paid, True means paid
             $table->timestamp('enrollment_date')->useCurrent();
             $table->boolean('enrollment_status')->default(false); // True means enrolled, False means not enrolled

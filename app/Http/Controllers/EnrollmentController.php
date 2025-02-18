@@ -12,13 +12,17 @@ class EnrollmentController extends Controller
 {
     public function store(Request $request, Batch $batch)
     {
+
+        if(!auth()->user() || auth()->user()->role !== 'student'){
+            return redirect()->guest(route('login'));
+        }
         try {
+
+
             // Ensure batch is open and admission is not over
             if ($batch->admission_end_date < now()) {
                 return redirect()->route('batches.index')->with('error', 'Admissions for this batch have closed.');
             }
-
-            // Check if user is already enrolled
             $user = auth()->user();
 
             //if not auth return back with alert u have to login
@@ -29,7 +33,7 @@ class EnrollmentController extends Controller
             $existingEnrollment = Enrollment::where('user_id', $user->id)->where('batch_id', $batch->id)->first();
 
             if ($existingEnrollment) {
-                return back()->with('error', 'You are already enrolled in this batch.');
+                return back()->with('success', 'You are already enrolled in this batch.');
             }
 
             // Enroll the user without payment (payment status is false initially)
@@ -53,7 +57,7 @@ class EnrollmentController extends Controller
             \Log::error('Enrollment failed: ' . $e->getMessage());
 
             // Redirect with an error message
-            return redirect()->route('batches.index')->with('error', 'An error occurred while enrolling. Please try again.');
+            return redirect()->route('batches.index')->with('success', 'An error occurred while enrolling. Please try again.');
         }
     }
 

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ['name','description', 'category_id', 'is_visible', 'position'];
+    //guarded
+    public $guared = [];
 
     // Cast JSON field to an array
     protected $casts = [
@@ -22,19 +23,35 @@ class Course extends Model
         return $this->belongsTo(Category::class);
     }
 
-    /**
-     * Get the batches for the course.
-     */
-    public function batches()
+
+
+    public function teacher()
     {
-        return $this->hasMany(Batch::class);
+        return $this->belongsTo(User::class, 'teacher_id');
     }
 
     /**
-     * Get active batches for the course, not admission end date over
+     * Check if the batch is fully enrolled.
      */
-    public function activeBatches()
+    public function isFull()
     {
-        return $this->batches()->where('admission_end_date', '>', now());
+        return $this->enrolled >= $this->capacity;
+    }
+
+    /**
+     * check all the enrollments for this batch
+     */
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+
+    /**
+     * Check if the batch is open for admission.
+     */
+    public function isOpen()
+    {
+        return $this->is_open;
     }
 }

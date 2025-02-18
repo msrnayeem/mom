@@ -8,11 +8,13 @@ use App\Http\Controllers\Admin\BatchController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TeacherController;
 
+use App\Http\Middleware\AdminMiddleware;
+
 // Authentication & Dashboard Routes
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
+})->middleware(AdminMiddleware::class)->name('admin.dashboard');
 
 // Group Admin Routes with Prefix
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
