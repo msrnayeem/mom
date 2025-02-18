@@ -84,7 +84,7 @@
                 <div class="header-one-wrapper">
                     <div class="left-side-header">
                         <a href="/" class="logo-area">
-                            <img src="{{ asset('assets/images/logo/logo-1.svg') }}" alt="logo">
+                            <img src="{{ asset('MOM-logo-02.jpg') }}" alt="logo" style="width: 144px;">
                         </a>
                         <div class="main-nav-one">
                             <nav>
