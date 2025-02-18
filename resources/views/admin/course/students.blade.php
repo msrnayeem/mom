@@ -29,7 +29,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Joined At</th>
+                                <th>Enrolled At</th>
                                 <th>Payment Status</th>
                                 <th>Enrollment Status</th>
                                 <th>Action</th>
@@ -47,7 +47,7 @@
                                             </a>
                                         </td>
                                         <td>{{ $enrollment->student->email }}</td>
-                                        <td>{{ $enrollment->created_at->format('d M Y') }}</td>
+                                        <td>{{ $enrollment->enrollment_date }}</td>
 
                                         <!-- Payment Status -->
                                         <td>

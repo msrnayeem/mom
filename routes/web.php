@@ -23,10 +23,8 @@ require __DIR__.'/student.php';
 // Route::resource('/category', CategoryController::class)->except(['destroy']);
 
 Route::get('/courses', [CourseController::class, 'index'])->name('course.index');
-Route::get('/course-details/{course}/{batch?}', [CourseController::class, 'courseDetails'])->name('course.details');
-Route::post('/course/{batch}/enroll', [EnrollmentController::class, 'store'])->name('course.enroll');
-
-Route::get('/course/batch/{batch}', [CourseController::class, 'batchDetails'])->name('course.batch.show');
+Route::get('/course-details/{course}', [CourseController::class, 'courseDetails'])->name('course.details');
+Route::post('/course/{course}/enroll', [EnrollmentController::class, 'store'])->name('course.enroll');
 
 Route::get('/', function () {
     return view('landing');

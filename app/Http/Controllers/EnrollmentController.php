@@ -3,34 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\enrollment;
-use App\Models\Batch;
+use App\Models\Course;
 
 use Illuminate\Http\Request;
 
 
 class EnrollmentController extends Controller
 {
-    public function store(Request $request, Batch $batch)
+    public function store(Request $request, Course $course)
     {
-
+        
         if(!auth()->user() || auth()->user()->role !== 'student'){
             return redirect()->guest(route('login'));
         }
         try {
-
-
+            
             // Ensure batch is open and admission is not over
-            if ($batch->admission_end_date < now()) {
-                return redirect()->route('batches.index')->with('error', 'Admissions for this batch have closed.');
+            if (!$course->isAdmissionOpen()) {
+                return back()->with('error', 'Admissions for this batch have closed.');
             }
+
             $user = auth()->user();
-
-            //if not auth return back with alert u have to login
-            if (!$user) {
-                return redirect()->back()->with('success', 'You need to login to enroll in a batch.');
-            }
-
-            $existingEnrollment = Enrollment::where('user_id', $user->id)->where('batch_id', $batch->id)->first();
+            
+            $existingEnrollment = Enrollment::where('user_id', $user->id)->where('course_id', $course->id)->first();
 
             if ($existingEnrollment) {
                 return back()->with('success', 'You are already enrolled in this batch.');
@@ -39,14 +34,14 @@ class EnrollmentController extends Controller
             // Enroll the user without payment (payment status is false initially)
             Enrollment::create([
                 'user_id' => $user->id,
-                'batch_id' => $batch->id,
+                'course_id' => $course->id,
                 'payment_status' => false, // Payment yet to be made
                 'enrollment_status' => false, // Not fully enrolled until payment
                 'remarks' => 'Enrollment initiated. Awaiting payment.', // Optional remarks
             ]);
 
             // Update the batch's enrolled count
-            $batch->increment('enrolled');
+            $course->increment('enrolled');
 
             // Redirect with success message
             return redirect()->back()->with('success', 'You have been successfully enrolled. Payment is required to finalize your enrollment.');
@@ -57,7 +52,7 @@ class EnrollmentController extends Controller
             \Log::error('Enrollment failed: ' . $e->getMessage());
 
             // Redirect with an error message
-            return redirect()->route('batches.index')->with('success', 'An error occurred while enrolling. Please try again.');
+            return back()->with('success', $e->getMessage());
         }
     }
 

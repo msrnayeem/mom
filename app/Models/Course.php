@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Course extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'description',
@@ -23,6 +24,7 @@ class Course extends Model
         'start_date',
         'end_date',
     ];
+    
 
     // Cast JSON field to an array
     protected $casts = [
@@ -61,16 +63,24 @@ class Course extends Model
         return $this->hasMany(Enrollment::class);
     }
 
-    /**
-     * Check if the batch is open for admission.
-     */
-    public function isOpen()
-    {
-        return $this->is_open;
-    }
-
+    
     public function students()
     {
         return $this->belongsToMany(User::class, 'enrollments', 'course_id', 'user_id');
+    }
+
+    public function scopeVisible()
+    {
+        return $this->where('is_visible', true);
+    }
+
+    public function scopeOpen()
+    {
+        return $this->where('is_open', true);
+    }
+
+    public function isAdmissionOpen()
+    {
+        return $this->admission_end_date > now();
     }
 }

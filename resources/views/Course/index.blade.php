@@ -121,10 +121,7 @@
                             <div class="row g-5 mt--30">
 
                                 @forelse($courses as $course)
-                                    @php
-                                        $activeBatch = $course->activeBatches->first(); // Get the first active batch if exists
-                                    @endphp
-
+                                    
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                         <!-- rts single course -->
                                         <div class="rts-single-course">
@@ -147,9 +144,7 @@
                                                         <!-- Get the enrolled count from the active batches -->
                                                         @php
                                                             $totalEnrolled = 0;
-                                                            foreach ($course->activeBatches as $batch) {
-                                                                $totalEnrolled += $batch->enrolled; // Summing enrolled count from all active batches
-                                                            }
+                                
                                                         @endphp
                                                         {{ $totalEnrolled }}
                                                     </span>
@@ -157,14 +152,8 @@
                                             </div>
 
                                             <a
-                                                href="{{ route('course.details', ['course' => $course, 'batch' => $course->activeBatches->first() ?? null]) }}">
-                                                <h5 class="title">{{ $course->name['en'] }} -
-                                                    @if ($activeBatch)
-                                                        {{ $activeBatch->name }}
-                                                    @else
-                                                        No Active Batch
-                                                    @endif
-                                                </h5>
+                                                href="{{ route('course.details',$course) }}">
+                                                <h5 class="title">{{ $course->name }}</h5>
                                             </a>
 
                                             <p class="teacher">Dr. Angela Yu</p>
@@ -243,9 +232,7 @@
                                                             <!-- Get the enrolled count from the active batches -->
                                                             @php
                                                                 $totalEnrolled = 0;
-                                                                foreach ($course->activeBatches as $batch) {
-                                                                    $totalEnrolled += $batch->enrolled; // Summing enrolled count from all active batches
-                                                                }
+                                                                
                                                             @endphp
                                                             {{ $totalEnrolled }}
                                                         </span>
@@ -253,14 +240,8 @@
                                                 </div>
 
                                                 <a
-                                                    href="{{ route('course.details', ['course' => $course, 'batch' => $course->activeBatches->first() ?? null]) }}">
-                                                    <h5 class="title">{{ $course->name['en'] }} -
-                                                        @if ($activeBatch)
-                                                            {{ $activeBatch->name }}
-                                                        @else
-                                                            No Active Batch
-                                                        @endif
-                                                    </h5>
+                                                    href="{{ route('course.details',  $course) }}">
+                                                    <h5 class="title">{{ $course->name }}</h5>
                                                 </a>
 
                                                 <p class="disc">Discover a world of knowledge and learning opportunities

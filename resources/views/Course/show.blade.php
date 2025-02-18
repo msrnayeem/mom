@@ -50,7 +50,20 @@
     </div>
     <!-- course details breadcrumb end -->
 
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
+    </div>
 
     <!-- course details-area start -->
     <div class="course-details-wrapper-2 rts-section-gap">
@@ -773,11 +786,9 @@
                     <div class="right-course-details mt--0">
                         <!-- single course-sidebar -->
                         <div class="course-side-bar">
-                            @if (session('success'))
-                                <div class="alert alert-success">{{ session('success') }}</div>
-                            @endif
+                            
                             <div class="price-area">
-                                <h3 class="title">BDT {{ $batch->fee }}</h3>
+                                <h3 class="title">BDT {{ $course->fee }}</h3>
                                 {{-- <h4 class="none">$79.99</h4>
                                 <span class="discount">-50%</span> --}}
                             </div>
@@ -785,11 +796,13 @@
                                 <i class="fa-light fa-clock"></i>
                                 <span>2 Day left at this price!</span>
                             </div>
-                            {{ auth()->user()->name ?? 'not' }}
-                            <form action="{{ route('course.enroll', $batch->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="rts-btn btn-primary">Enroll Now</button>
-                            </form>
+                            @if ($course && $course->isAdmissionOpen())
+                                <form action="{{ route('course.enroll', $course) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="rts-btn btn-primary">Enroll Now</button>
+                                </form>
+                            @endif
+                            
                             {{-- <a href="#" class="rts-btn btn-border">Buy Now</a> --}}
 
                             <div class="what-includes">
@@ -810,7 +823,7 @@
                                         <span>Duration</span>
                                     </div>
                                     <div class="right">
-                                        <span>{{ str_pad($batch->batch_duration, 2, '0', STR_PAD_LEFT) }} Month</span>
+                                        <span>{{ str_pad($course->course_duration, 2, '0', STR_PAD_LEFT) }} Month</span>
                                     </div>
                                 </div>
                                 <div class="single-include">
@@ -819,7 +832,7 @@
                                         <span>Course</span>
                                     </div>
                                     <div class="right">
-                                        <span>{{ $course->name['en'] }}</span>
+                                        <span>{{ $course->name }}</span>
                                     </div>
                                 </div>
                                 <div class="single-include">
