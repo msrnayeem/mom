@@ -74,3 +74,63 @@
     </div>
 </header>
 <!-- header style end -->
+
+
+<!-- header style two -->
+<div id="side-bar" class="side-bar header-two">
+    <button class="close-icon-menu"><i class="far fa-times"></i></button>
+    <!-- inner menu area desktop start -->
+    <div class="inner-main-wrapper-desk">
+        <div class="thumbnail">
+            <img src="assets/images/banner/04.jpg" alt="elevate">
+        </div>
+        <div class="inner-content">
+            <h4 class="title">We Build Building and Great Constructive Homes.</h4>
+            <p class="disc">
+                We successfully cope with tasks of varying complexity, provide long-term guarantees and regularly master new technologies.
+            </p>
+            <div class="footer">
+                <h4 class="title">Got a project in mind?</h4>
+                <a href="contact.html" class="rts-btn btn-primary">Let's talk</a>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu area start -->
+    <div class="mobile-menu-main">
+        <nav class="nav-main mainmenu-nav mt--30">
+            <ul class="mainmenu metismenu" id="mobile-menu-active">
+                <li class="">
+                    <a href="#" class="main">Home</a>
+                </li>
+                <li class="">
+                    <a href="#" class="main">Profile</a>
+                </li>
+                <li class="">
+                    <a href="#" class="main">Enrolled Courses</a>
+                </li>
+                <li class="">
+                    <a href="#" class="main">Settings</a>
+                </li>
+            </ul>
+        </nav>
+
+        
+        <div class="buttons-area">
+            @guest
+                <a href="{{ route('login') }}" class="rts-btn btn-border">Log In</a>
+                <a href="{{ route('register') }}" class="rts-btn btn-primary">Sign Up</a>
+            @endguest
+            @auth
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline" style="display: none;">
+                @csrf
+            </form>
+            
+            <a href="#" class="rts-btn btn-primary" onclick="document.getElementById('logout-form').submit(); return false;">
+                Log Out
+            </a>
+            @endauth
+        </div>
+    </div>
+    <!-- mobile menu area end -->
+</div>
+<!-- header style two End -->
