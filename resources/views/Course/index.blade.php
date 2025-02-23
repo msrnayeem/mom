@@ -134,10 +134,10 @@
                                                 </div>
                                             </div>
                                             <div class="lesson-studente">
-                                                <div class="lesson">
+                                                {{-- <div class="lesson">
                                                     <i class="fa-light fa-calendar-lines-pen"></i>
                                                     <span>25 Lessons</span>
-                                                </div>
+                                                </div> --}}
                                                 <div class="lesson">
                                                     <i class="fa-light fa-user-group"></i>
                                                     <span>
@@ -155,10 +155,11 @@
                                                 href="{{ route('course.details',$course) }}">
                                                 <h5 class="title">{{ $course->name }}</h5>
                                             </a>
-
-                                            <p class="teacher">Dr. Angela Yu</p>
+                                            @if ($course->teacher)
+                                                <p class="teacher">Course By-{{ $course->teacher->name }}</p>
+                                            @endif
                                             <div class="rating-and-price">
-                                                <div class="rating-area">
+                                                {{-- <div class="rating-area">
                                                     <span>4.5</span>
                                                     <div class="stars">
                                                         <ul>
@@ -169,13 +170,13 @@
                                                             <li><i class="fa-sharp fa-regular fa-star"></i></li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <div class="price-area">
-                                                    <div class="not price">
+                                                    {{-- <div class="not price">
                                                         $79.99
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="price">
-                                                        $79.99
+                                                        {{ $course->fee }} BDT
                                                     </div>
                                                 </div>
                                             </div>
@@ -248,7 +249,7 @@
                                                 </p>
                                                 <p class="teacher">Dr. Angela Yu</p>
                                                 <div class="rating-and-price">
-                                                    <div class="rating-area">
+                                                    {{-- <div class="rating-area">
                                                         <span>4.5</span>
                                                         <div class="stars">
                                                             <ul>
@@ -259,11 +260,11 @@
                                                                 <li><i class="fa-sharp fa-regular fa-star"></i></li>
                                                             </ul>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="price-area">
-                                                        <div class="not price">
+                                                        {{-- <div class="not price">
                                                             $79.99
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="price">
                                                             $79.99
                                                         </div>

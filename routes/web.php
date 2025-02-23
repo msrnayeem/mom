@@ -27,5 +27,9 @@ Route::get('/course-details/{course}', [CourseController::class, 'courseDetails'
 Route::post('/course/{course}/enroll', [EnrollmentController::class, 'store'])->name('course.enroll');
 
 Route::get('/', function () {
-    return view('landing');
+    return view('index');
 })->name('home');
+
+Route::get('/details', function () {
+    return view('details');
+})->name('details');

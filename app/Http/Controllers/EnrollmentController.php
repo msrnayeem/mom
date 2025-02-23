@@ -35,7 +35,6 @@ class EnrollmentController extends Controller
             Enrollment::create([
                 'user_id' => $user->id,
                 'course_id' => $course->id,
-                'payment_status' => false, // Payment yet to be made
                 'enrollment_status' => false, // Not fully enrolled until payment
                 'remarks' => 'Enrollment initiated. Awaiting payment.', // Optional remarks
             ]);

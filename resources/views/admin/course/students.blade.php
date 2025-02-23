@@ -51,10 +51,7 @@
 
                                         <!-- Payment Status -->
                                         <td>
-                                            <span
-                                                class="badge bg-{{ $enrollment->payment_status ? 'success' : 'warning' }}">
-                                                {{ $enrollment->payment_status ? 'Paid' : 'Pending' }}
-                                            </span>
+                                                {{ $enrollment->payment_status }}
                                         </td>
 
                                         <!-- Enrollment Status -->
@@ -66,15 +63,15 @@
                                         </td>
 
                                         <td>
-                                            <a href="{{ route('admin.students.edit', $enrollment->student->id) }}"
+                                            <a href="{{ route('admin.edit.enrollment', $enrollment) }}"
                                                 class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="{{ route('admin.students.destroy', $enrollment->student->id) }}"
+                                            {{-- <form action="{{ route('admin.students.destroy', $enrollment->student->id) }}"
                                                 method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"
                                                     onclick="return confirm('Are you sure?')">Delete</button>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 @endif

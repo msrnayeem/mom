@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
-            $table->boolean('payment_status')->default(false); // False means not paid, True means paid
+            $table->enum('payment_status', ['not_paid', 'partial', 'paid'])->default('not_paid');
             $table->timestamp('enrollment_date')->useCurrent();
             $table->boolean('enrollment_status')->default(false); // True means enrolled, False means not enrolled
             $table->text('remarks')->nullable();
