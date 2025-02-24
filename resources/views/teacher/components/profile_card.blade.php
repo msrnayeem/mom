@@ -10,7 +10,7 @@
                             <img src="{{asset('assets/images/dashboard/04.png')}}" alt="dashboard">
                         </div>
                         <div class="name-desig">
-                            <h1 class="title">{{ auth()->user()->name }}</h1>
+                            <h1 class="title">{{ auth()->user()->name}}</h1>
                             <div class="course-vedio">
                                 <div class="single">
                                     <i class="fa-thin fa-book"></i>

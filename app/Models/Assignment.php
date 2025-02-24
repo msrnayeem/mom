@@ -26,4 +26,9 @@ class Assignment extends Model
         });
     }
 
+    public function teacher()
+    {
+        return $this->course->teacher();
+    }
+
 }

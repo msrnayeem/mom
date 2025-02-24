@@ -12,18 +12,18 @@
                             <nav>
                                 <ul>
                                     <li class="" style="position: static;">
-                                        <a class="nav-link" href="{{ route('student.dashboard') }}">Home</a>
+                                        <a class="nav-link" href="{{ route('teacher.dashboard') }}">Home</a>
                                     </li>
                                     <li class="" style="position: static;">
-                                      <a class="nav-link" href="{{ route('student.profile') }}">My Profile</a>
+                                      <a class="nav-link" href="{{ route('teacher.profile') }}">My Profile</a>
                                   </li>
 
                                   <li class="" style="position: static;">
-                                    <a class="nav-link" href="{{ route('student.enrolled.courses') }}">Enrolled Courses</a>
+                                    <a class="nav-link" href="{{ route('teacher.enrolled.courses') }}">My Courses</a>
                                 </li>
                                 
                                 <li class="" style="position: static;">
-                                    <a class="nav-link" href="{{ route('student.assignment.index') }}">Assignments({{ auth()->user()->pendingAssignmentsCount() }})</a>
+                                    <a class="nav-link" href="{{ route('teacher.assignment.index') }}">Assignments</a>
                                 </li>
                                 <li class="" style="position: static;">
                                   <a class="nav-link" href="#">Setting</a>
@@ -104,16 +104,16 @@
         <nav class="nav-main mainmenu-nav mt--30">
             <ul class="mainmenu metismenu" id="mobile-menu-active">
                 <li class="">
-                    <a href="{{ route('student.dashboard') }}" class="main">Home</a>
+                    <a href="{{ route('teacher.dashboard') }}" class="main">Home</a>
                 </li>
                 <li class="">
-                    <a href="{{ route('student.profile') }}" class="main">My Profile</a>
+                    <a href="{{ route('teacher.profile') }}" class="main">My Profile</a>
                 </li>
                 <li class="">
-                    <a href="{{ route('student.enrolled.courses') }}" class="main">Enrolled Courses</a>
+                    <a href="{{ route('teacher.enrolled.courses') }}" class="main">My Courses</a>
                 </li>
                 <li class="">
-                    <a class="main" href="{{ route('student.assignment.index') }}">Assignments({{ auth()->user()->pendingAssignmentsCount() }})</a>
+                    <a class="main" href="{{ route('teacher.assignment.index') }}">Assignments</a>
                 </li>
                 <li class="">
                     <a href="#" class="main">Settings</a>

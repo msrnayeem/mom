@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/student.php';
+require __DIR__.'/teacher.php';
+
 
 // Route::resource('/category', CategoryController::class)->except(['destroy']);
 
@@ -41,6 +43,10 @@ Route::get('/dashboard', function () {
     } elseif
     (auth()->user()->role == 'student') {
         return redirect()->route('student.dashboard');
+    }
+    elseif
+    (auth()->user()->role == 'teacher') {
+        return redirect()->route('teacher.dashboard');
     }
 })->name('dashboard');
 

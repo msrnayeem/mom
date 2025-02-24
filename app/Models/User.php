@@ -72,9 +72,20 @@ class User extends Authenticatable
     
     public function assignments()
     {
-        // Get the assignments for all courses the user is enrolled in
         return $this->hasManyThrough(Assignment::class, Enrollment::class, 'user_id', 'course_id', 'id', 'course_id');
     }
+
+    public function pendingAssignmentsCount()
+{
+    return $this->assignments()->where('due_date', '>', now())->count();
+}
+
+
+    public function teacherAssignments()
+    {
+        return $this->hasManyThrough(Assignment::class, Course::class, 'teacher_id', 'course_id');
+    }
+
 
 
 }
