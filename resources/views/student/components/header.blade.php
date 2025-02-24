@@ -12,14 +12,14 @@
                             <nav>
                                 <ul>
                                     <li class="" style="position: static;">
-                                        <a class="nav-link" href="#">Home</a>
+                                        <a class="nav-link" href="{{ route('student.dashboard') }}">Home</a>
                                     </li>
                                     <li class="" style="position: static;">
-                                      <a class="nav-link" href="#">My Profile</a>
+                                      <a class="nav-link" href="{{ route('student.profile') }}">My Profile</a>
                                   </li>
 
                                   <li class="" style="position: static;">
-                                    <a class="nav-link" href="#">Enrolled Courses</a>
+                                    <a class="nav-link" href="{{ route('student.enrolled.courses') }}">Enrolled Courses</a>
                                 </li>
                                 <li class="" style="position: static;">
                                   <a class="nav-link" href="#">Setting</a>
@@ -80,7 +80,7 @@
 <div id="side-bar" class="side-bar header-two">
     <button class="close-icon-menu"><i class="far fa-times"></i></button>
     <!-- inner menu area desktop start -->
-    <div class="inner-main-wrapper-desk">
+    {{-- <div class="inner-main-wrapper-desk">
         <div class="thumbnail">
             <img src="assets/images/banner/04.jpg" alt="elevate">
         </div>
@@ -94,19 +94,19 @@
                 <a href="contact.html" class="rts-btn btn-primary">Let's talk</a>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- mobile menu area start -->
     <div class="mobile-menu-main">
         <nav class="nav-main mainmenu-nav mt--30">
             <ul class="mainmenu metismenu" id="mobile-menu-active">
                 <li class="">
-                    <a href="#" class="main">Home</a>
+                    <a href="{{ route('student.dashboard') }}" class="main">Home</a>
                 </li>
                 <li class="">
-                    <a href="#" class="main">Profile</a>
+                    <a href="{{ route('student.profile') }}" class="main">My Profile</a>
                 </li>
                 <li class="">
-                    <a href="#" class="main">Enrolled Courses</a>
+                    <a href="{{ route('student.enrolled.courses') }}" class="main">Enrolled Courses</a>
                 </li>
                 <li class="">
                     <a href="#" class="main">Settings</a>

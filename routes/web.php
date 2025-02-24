@@ -33,3 +33,13 @@ Route::get('/', function () {
 Route::get('/details', function () {
     return view('details');
 })->name('details');
+
+//dashboard route without auth
+Route::get('/dashboard', function () {
+    if(auth()->user()->role == 'admin') {
+        return redirect()->route('admin.dashboard');
+    } elseif
+    (auth()->user()->role == 'student') {
+        return redirect()->route('student.dashboard');
+    }
+})->name('dashboard');

@@ -199,6 +199,21 @@
           <li class="nav-item"><a class="nav-link" href="#featured-courses">Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+          @guest
+          <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Log In</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+          @else
+          <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}"
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              Log Out
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+          </li>
+          @endguest
         </ul>
       </div>
     </div>

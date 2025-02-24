@@ -35,9 +35,10 @@
         <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
     </div>
     <!-- offcanvase search -->
+    
     <div id="anywhere-home" class="">
     </div>
-
+    
     @include('student.components.js')
 
 

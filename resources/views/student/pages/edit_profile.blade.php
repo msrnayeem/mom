@@ -17,120 +17,12 @@ button, .btn {
 }
 
 </style>
-    <!-- dashboard banner area start -->
-    <div class="dashboard-banner-area-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="dashboard-banner-area-start bg_image  student-dashboard">
-                        
-                        <div class="author-profile-image-and-name">
-                            <div class="profile-pic">
-                                <img src="{{asset('assets/images/dashboard/04.png')}}" alt="dashboard">
-                            </div>
-                            <div class="name-desig">
-                                <h1 class="title">{{ $profile->name }}</h1>
-                                <div class="course-vedio">
-                                    <div class="single">
-                                        <i class="fa-thin fa-book"></i>
-                                        <span>5 Course Enrolled</span>
-                                    </div>
-                                    <div class="single">
-                                        <i class="fa-thin fa-file-certificate"></i>
-                                        <span>4 Certificate</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- dashboard banner area end -->
-
-
-
+   
      <!-- rts dahboard-area-main-wrapper -->
      <div class="dashboard--area-main pt--100">
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="left-sindebar-dashboard">
-                        <div class="dashboard-left-single-wrapper">
-                            <!-- single item -->
-                            <a href="{{ route('student.dashboard') }}" class="single-item ">
-                                <i class="fa-light fa-house"></i>
-                                <p>Dashboard</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="student-profile.html" class="single-item active">
-                                <i class="fa-regular fa-user"></i>
-                                <p>My Profile</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="student-enroll-course.html" class="single-item ">
-                                <i class="fa-light fa-graduation-cap"></i>
-                                <p>Enrolled Courses</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="student-wishlist.html" class="single-item ">
-                                <i class="fa-sharp fa-light fa-bookmark"></i>
-                                <p>Wishlist</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="student-reviews.html" class="single-item ">
-                                <i class="fa-regular fa-star"></i>
-                                <p>Reviews</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="student-quiz-attempts.html" class="single-item ">
-                                <i class="fa-sharp fa-light fa-bullseye-pointer"></i>
-                                <p>My Quiz Attempts</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="student-order-history.html" class="single-item ">
-                                <i class="fa-sharp fa-light fa-bag-shopping"></i>
-                                <p>Order History</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="student-question-answer.html" class="single-item ">
-                                <i class="fa-regular fa-circle-question"></i>
-                                <p>Question & Answer</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="student-calender.html" class="single-item ">
-                                <i class="fa-light fa-calendar-days"></i>
-                                <p>Calendar</p>
-                            </a>
-                            <!-- single item end -->
-                        </div>
-                        <div class="dashboard-left-single-wrapper bbnone mt--40">
-                            <h4 class="title mb--5">User</h4>
-                            <!-- single item -->
-                            <a href="student-settings.html" class="single-item ">
-                                <i class="fa-sharp fa-regular fa-gear"></i>
-                                <p>Settings</p>
-                            </a>
-                            <!-- single item end -->
-                            <!-- single item -->
-                            <a href="index.html" class="single-item">
-                                <i class="fa-light fa-right-from-bracket"></i>
-                                <p>Logout</p>
-                            </a>
-                            <!-- single item end -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <div class="card rounded shadow-sm p-2">
                       <div class="card-header text-white py-3">
                         <h5 class="mb-0">Edit Profile</h5>
