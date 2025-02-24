@@ -41,7 +41,7 @@
     
     @include('student.components.js')
 
-
+    @yield('scripts')
 </body>
 
 </html>

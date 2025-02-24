@@ -6,8 +6,8 @@
     <!-- rts dahboard-area-main-wrapper -->
     <div class="dashboard--area-main pt--100">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-12">
+            <div class="row g-5 justify-content-center">
+                <div class="col-lg-10">
                     <!-- in progress course area -->
                     <div class="in-progress-course-wrapper  title-between-dashboard mb--10">
                         <h5 class="title">My Courses</h5>

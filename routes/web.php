@@ -4,7 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -43,3 +43,7 @@ Route::get('/dashboard', function () {
         return redirect()->route('student.dashboard');
     }
 })->name('dashboard');
+
+
+Route::post('/send-message', [MessageController::class, 'sendMessage'])->middleware('auth');
+Route::get('/messages/{course_id}', [MessageController::class, 'getMessages'])->middleware('auth');

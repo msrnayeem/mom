@@ -1,6 +1,6 @@
 <!-- All Scripts -->
 <!-- jQuery Min JS -->
-<script src="{{ asset('assets/js/vendor/jquery.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- jQuery UI JS -->
 <script src="{{ asset('assets/js/vendor/jquery-ui.js') }}"></script>
 <!-- MetisMenu JS -->
@@ -35,3 +35,6 @@
 <script src="{{ asset('assets/js/plugins/calender.js') }}"></script>
 <!-- Main JS -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
+
+
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>

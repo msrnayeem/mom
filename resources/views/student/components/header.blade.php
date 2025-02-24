@@ -21,6 +21,10 @@
                                   <li class="" style="position: static;">
                                     <a class="nav-link" href="{{ route('student.enrolled.courses') }}">Enrolled Courses</a>
                                 </li>
+                                
+                                <li class="" style="position: static;">
+                                    <a class="nav-link" href="{{ route('student.assignment.index') }}">Assignments</a>
+                                </li>
                                 <li class="" style="position: static;">
                                   <a class="nav-link" href="#">Setting</a>
                               </li>
@@ -107,6 +111,9 @@
                 </li>
                 <li class="">
                     <a href="{{ route('student.enrolled.courses') }}" class="main">Enrolled Courses</a>
+                </li>
+                <li class="">
+                    <a class="main" href="{{ route('student.assignment.index') }}">Assignments</a>
                 </li>
                 <li class="">
                     <a href="#" class="main">Settings</a>
