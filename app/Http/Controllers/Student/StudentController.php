@@ -24,9 +24,10 @@ class StudentController extends Controller
 
     public function courseResource(Enrollment $enrollment){
         
-        $course_id = $enrollment->course_id;
-
-        return view('student.pages.course_resource', compact('course_id'));
+        $course = $enrollment->course;
+  
+    
+        return view('student.pages.course_resource', compact('course'));
 
     }
 

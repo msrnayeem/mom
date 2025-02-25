@@ -7,7 +7,7 @@ use App\Http\Middleware\TeacherMiddleware;
 use App\Http\Controllers\Teacher\ProfileController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\AssignmentTController;
-
+use App\Http\Controllers\Teacher\CourseResourceController;
 
 
 Route::middleware(TeacherMiddleware::class)->prefix('teacher')->name('teacher.')->group(function () {
@@ -21,8 +21,12 @@ Route::middleware(TeacherMiddleware::class)->prefix('teacher')->name('teacher.')
     Route::get('/my-courses', [TeacherController::class, 'enrolledCourses'])->name('enrolled.courses');
 
     //course resource
-    Route::get('/course-resource/{enrollment}', [TeacherController::class, 'courseResource'])->name('course.resource');
-    Route::get('/files/{course_id}', [TeacherController::class, 'getFiles'])->name('files');
+    Route::get('/course-resource/{course}', [CourseResourceController::class, 'view'])->name('course.resource');
+
+    Route::get('/course-resource/create/{course}', [CourseResourceController::class, 'create'])->name('course.resource.create');
+    Route::post('/course-resource/store', [CourseResourceController::class, 'store'])->name('course.resource.store');
+
+    Route::get('/files/{course_id}', [CourseResourceController::class, 'getFiles'])->name('files');
 
     //student in course
     Route::get('/students/{course}', [TeacherController::class, 'studentsInCourse'])->name('course.students');

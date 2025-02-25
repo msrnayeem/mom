@@ -83,4 +83,10 @@ class Course extends Model
     {
         return $this->admission_end_date > now();
     }
+
+    //courseresource has many
+    public function resources()
+    {
+        return $this->hasMany(CourseResource::class);
+    }
 }

@@ -22,24 +22,7 @@ class TeacherController extends Controller
         return view('teacher.pages.enrolled_courses', compact('courses'));
     }
 
-    public function courseResource(Enrollment $enrollment){
-        
-        $course_id = $enrollment->course_id;
-
-        return view('teacher.pages.course_resource', compact('course_id'));
-
-    }
-
-    public function getFiles($course_id)
-    {
-        $messages = \App\Models\Message::with('sender')
-            ->where('course_id', $course_id)
-            ->orderBy('created_at', 'asc')
-            ->get();
-
-        // Optionally, you can format the messages for DataTables
-        return response()->json($messages);
-    }
+    
 
     public function studentsInCourse(Course $course)
     {

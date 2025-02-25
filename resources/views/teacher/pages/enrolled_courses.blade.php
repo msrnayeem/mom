@@ -20,7 +20,9 @@
                             <div class="name">
                                 <p>Course Name</p>
                             </div>
-
+                            <div class="name">
+                                <p>Course Materials</p>
+                            </div>
                             <div class="enroll">
                                 <p>Start Date</p>
                             </div>
@@ -36,9 +38,10 @@
                         @foreach ($courses as $course)
                             <div class="single-course-inroll-board">
                                 <div class="name">
-                                    <p>
-                                        <a href="{{ route('teacher.course.resource', $course) }}">{{ $course->name }}</a>
-                                    </p>
+                                    <p>{{ $course->name }}</p>
+                                </div>
+                                <div class="enroll">
+                                    <a href="{{ route('teacher.course.resource', $course) }}">View Materials</a>
                                 </div>
                                 <div class="enroll">
                                     <p>{{ $course->start_date }}</p>
@@ -48,7 +51,7 @@
                                     <p>{{$course->end_date}}</p>
                                 </div>
                                 <div class="enroll">
-                                    <a href="{{ route('teacher.course.students', $course) }}">View Students</a>
+                                    <a href="{{ route('teacher.course.students', $course) }}">View Students ({{ $course->enrolled }})</a>
                                 </div>
                             </div>
                         @endforeach

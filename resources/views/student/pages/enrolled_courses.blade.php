@@ -21,6 +21,9 @@
                             <div class="name">
                                 <p>Course Name</p>
                             </div>
+                            <div class="name">
+                                <p>Materials</p>
+                            </div>
                             <div class="enroll">
                                 <p>Enroll Date</p>
                             </div>
@@ -39,8 +42,11 @@
                             <div class="single-course-inroll-board">
                                 <div class="name">
                                     <p>
-                                        <a href="{{ route('student.course.resource', $enrollment) }}">{{ $enrollment->course->name }}</a>
+                                        {{ $enrollment->course->name }}
                                     </p>
+                                </div>
+                                <div class="enroll">
+                                    <a href="{{ route('student.course.resource', $enrollment) }}">View</a>
                                 </div>
                                 <div class="enroll">
                                     <p>{{ $enrollment->created_at }}</p>

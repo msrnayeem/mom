@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up():void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('course_resources', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->text('content')->nullable(); // Message text
-            $table->string('file_name')->nullable();
+            $table->string('title')->nullable();
             $table->string('file_path')->nullable(); // File attachment
             $table->timestamps();
         });
