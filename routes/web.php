@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialAuthController;
@@ -53,3 +54,5 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/send-message', [MessageController::class, 'sendMessage'])->middleware('auth');
 Route::get('/messages/{course_id}', [MessageController::class, 'getMessages'])->middleware('auth');
+
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');

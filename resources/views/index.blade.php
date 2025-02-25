@@ -660,19 +660,28 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <div class="contact-form">
-                        <form>
+                        <form action="{{ route('feedback.store') }}" method="POST">
+                            @csrf
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="নাম">
+                                <input type="text" class="form-control" name="name" placeholder="নাম"
+                                    required>
                             </div>
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="ইমেইল">
+                                <input type="email" class="form-control" name="email" placeholder="ইমেইল">
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control" rows="5" placeholder="বার্তা"></textarea>
+                                <textarea class="form-control" name="message" rows="5" placeholder="বার্তা" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-dark">পাঠান</button>
                         </form>
+
                     </div>
                 </div>
             </div>
