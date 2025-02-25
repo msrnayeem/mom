@@ -32,16 +32,18 @@ Route::get('/details', function () {
     return view('details');
 })->name('details');
 
-//dashboard route without auth
-Route::get('/dashboard', function () {
-    if (auth()->user()->role == 'admin') {
-        return redirect()->route('admin.dashboard');
-    } elseif (auth()->user()->role == 'student') {
-        return redirect()->route('student.dashboard');
-    } elseif (auth()->user()->role == 'teacher') {
-        return redirect()->route('teacher.dashboard');
-    }
-})->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        if (auth()->user()->role == 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif (auth()->user()->role == 'student') {
+            return redirect()->route('student.dashboard');
+        } elseif (auth()->user()->role == 'teacher') {
+            return redirect()->route('teacher.dashboard');
+        }
+    })->name('dashboard');
+});
 
 Route::post('/send-message', [MessageController::class, 'sendMessage'])->middleware('auth');
 Route::get('/messages/{course_id}', [MessageController::class, 'getMessages'])->middleware('auth');
