@@ -62,6 +62,11 @@ class User extends Authenticatable
         return $this->hasManyThrough(Course::class, Enrollment::class, 'user_id', 'id', 'id', 'course_id');
     }
 
+    public function teacherCourses()
+    {
+        return $this->hasMany(Course::class, 'teacher_id'); // 'teacher_id' is the foreign key in the Course table
+    }
+
     public function courseCount()
     {
         return $this->courses()->count();

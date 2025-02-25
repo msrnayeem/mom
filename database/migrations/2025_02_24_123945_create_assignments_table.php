@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('file_path'); // Path to the uploaded file
+            $table->string('file_path')->nullable(); // Path to the uploaded file
             $table->foreignId('course_id')->constrained()->onDelete('cascade'); // Link to the course
             $table->date('due_date');
             $table->timestamps();

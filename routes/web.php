@@ -45,3 +45,5 @@ Route::get('/dashboard', function () {
 
 Route::post('/send-message', [MessageController::class, 'sendMessage'])->middleware('auth');
 Route::get('/messages/{course_id}', [MessageController::class, 'getMessages'])->middleware('auth');
+
+

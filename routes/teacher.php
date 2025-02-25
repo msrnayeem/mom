@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Teacher\AssignmentTController;
+use App\Http\Controllers\Teacher\AssignmentController;
 use App\Http\Controllers\Teacher\CourseResourceController;
 use App\Http\Controllers\Teacher\ProfileController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -28,7 +28,15 @@ Route::middleware(TeacherMiddleware::class)->prefix('teacher')->name('teacher.')
     //student in course
     Route::get('/students/{course}', [TeacherController::class, 'studentsInCourse'])->name('course.students');
 
-    Route::get('/assignments', [AssignmentTController::class, 'index'])->name('assignment.index');
-    Route::get('/assignments/{assignment}', [AssignmentTController::class, 'view'])->name('assignment.view');
-    Route::post('assignments-file/{assignment}/upload', [AssignmentTController::class, 'uploadFileAssignment'])->name('assignment.files.upload');
+    Route::get('/assignments', [AssignmentController::class, 'index'])->name('assignment.index');
+    Route::get('/assignments/{assignment}', [AssignmentController::class, 'view'])->name('assignment.view');
+
+    Route::get('/assignments/edit/{assignment}', [AssignmentController::class, 'edit'])->name('assignment.edit');
+    Route::put('/assignments/update/{assignment}', [AssignmentController::class, 'update'])->name('assignment.update');
+
+    Route::post('/assignments/store', [AssignmentController::class, 'store'])->name('assignment.store');
+    Route::post('assignments-file/{assignment}/upload', [AssignmentController::class, 'uploadFileAssignment'])->name('assignment.files.upload');
 });
+
+Route::get('/teacherr/assignments/newAssignment', [AssignmentController::class, 'new']
+)->name('assignment.new');
