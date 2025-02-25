@@ -2,16 +2,12 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
+use App\Models\Message;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-
-use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
-use App\Models\Message;
 
 class NewMessage implements ShouldBroadcastNow
 {
@@ -26,7 +22,7 @@ class NewMessage implements ShouldBroadcastNow
 
     public function broadcastOn()
     {
-        return new PrivateChannel('course.' . $this->message->course_id);
+        return new PrivateChannel('course.'.$this->message->course_id);
     }
 
     public function broadcastAs()
@@ -38,8 +34,7 @@ class NewMessage implements ShouldBroadcastNow
     {
         return [
             'message' => $this->message,
-            'sender'  => $this->message->sender->only('id', 'name'),
+            'sender' => $this->message->sender->only('id', 'name'),
         ];
     }
 }
-

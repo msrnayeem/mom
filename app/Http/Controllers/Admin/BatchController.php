@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Batch;
 use App\Models\Course;
 use App\Models\User;
@@ -17,6 +16,7 @@ class BatchController extends Controller
     public function index()
     {
         $batches = Batch::all();
+
         return view('admin.batch.index', compact('batches'));
     }
 
@@ -69,8 +69,8 @@ class BatchController extends Controller
             return redirect()->route('admin.batches.index')->with('success', 'Batch created successfully.');
         } catch (\Exception $e) {
             return redirect()->route('admin.batches.create')
-            ->withErrors(['success' => 'Error creating batch: ' . $e->getMessage()])
-            ->withInput();
+                ->withErrors(['success' => 'Error creating batch: '.$e->getMessage()])
+                ->withInput();
         }
     }
 
@@ -132,8 +132,8 @@ class BatchController extends Controller
             return redirect()->route('admin.batches.index')->with('success', 'Batch updated successfully.');
         } catch (\Exception $e) {
             return redirect()->route('admin.batches.create')
-            ->withErrors(['success' => 'Error creating batch: ' . $e->getMessage()])
-            ->withInput();
+                ->withErrors(['success' => 'Error creating batch: '.$e->getMessage()])
+                ->withInput();
         }
     }
 
@@ -144,9 +144,10 @@ class BatchController extends Controller
     {
         try {
             $batch->delete();
+
             return redirect()->route('admin.batches.index')->with('success', 'Batch deleted successfully.');
         } catch (\Exception $e) {
-            return redirect()->route('admin.batches.index')->withErrors(['success' => 'Error deleting batch: ' . $e->getMessage()]);
+            return redirect()->route('admin.batches.index')->withErrors(['success' => 'Error deleting batch: '.$e->getMessage()]);
         }
     }
 
@@ -164,6 +165,4 @@ class BatchController extends Controller
 
         return view('admin.batch.students', compact('batch', 'students'));
     }
-
-
 }

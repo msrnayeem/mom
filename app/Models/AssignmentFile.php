@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssignmentFile extends Model
 {
-    protected $fillable = ['assignment_id', 'file_path','original_name','user_id'];
+    protected $fillable = ['assignment_id', 'file_path', 'original_name', 'user_id'];
 
     public function assignment()
     {

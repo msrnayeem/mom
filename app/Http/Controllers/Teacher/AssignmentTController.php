@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Assignment;
 use App\Models\AssignmentFile;
 use Illuminate\Http\Request;
@@ -17,7 +16,6 @@ class AssignmentTController extends Controller
     {
         // Fetch assignments for the authenticated user as teacher role
         $assignments = auth()->user()->teacherAssignments;
-        
 
         return view('teacher.pages.assignments', compact('assignments'));
     }
@@ -28,10 +26,9 @@ class AssignmentTController extends Controller
     {
         // Get all files related to the assignment
         $studentFiles = $assignment->files()->with('user')->get();
-    
+
         return view('teacher.pages.assignments_view', compact('assignment', 'studentFiles'));
     }
-    
 
     public function uploadFileAssignment(Request $request, Assignment $assignment)
     {
@@ -56,7 +53,4 @@ class AssignmentTController extends Controller
 
         return redirect()->route('teacher.assignment.view', $assignment)->with('success', 'Your assignment has been uploaded successfully!');
     }
-
-
-
 }

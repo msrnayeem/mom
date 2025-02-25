@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 use App\Models\Student;
-
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -16,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::where('role', "student")->get();
+        $students = User::where('role', 'student')->get();
 
         return view('admin.students.index', compact('students'));
     }
@@ -26,7 +25,7 @@ class StudentController extends Controller
      */
     public function show(User $student)
     {
-        
+
         return view('admin.students.show', compact('student'));
     }
 
@@ -42,8 +41,8 @@ class StudentController extends Controller
     {
         // Base validation rules for primary information
         $primaryRules = [
-            'name'  => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $student->id,
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$student->id,
         ];
 
         // If password update is requested, add password validation rules
@@ -55,7 +54,7 @@ class StudentController extends Controller
 
         // Prepare data for primary info update
         $updateData = [
-            'name'  => $request->name,
+            'name' => $request->name,
             'email' => $request->email,
         ];
 
@@ -69,7 +68,7 @@ class StudentController extends Controller
         // Update additional student details only if any additional fields are provided
         if ($student->role === 'student' && ($request->filled('phone') || $request->filled('whatsapp') || $request->filled('address'))) {
             $additionalRules = [
-                'phone'   => 'nullable|string|max:255',
+                'phone' => 'nullable|string|max:255',
                 'whatsapp' => 'nullable|string|max:255',
                 'address' => 'nullable|string|max:255',
             ];
@@ -78,14 +77,14 @@ class StudentController extends Controller
 
             if ($student->student_details) {
                 $student->student_details->update([
-                    'phone'   => $request->phone,
+                    'phone' => $request->phone,
                     'whatsapp' => $request->whatsapp,
                     'address' => $request->address,
                 ]);
             } else {
                 Student::create([
                     'user_id' => $student->id,
-                    'phone'   => $request->phone,
+                    'phone' => $request->phone,
                     'whatsapp' => $request->whatsapp,
                     'address' => $request->address,
                 ]);
@@ -93,10 +92,8 @@ class StudentController extends Controller
         }
 
         return redirect()->route('admin.students.index')
-                        ->with('success', 'Student updated successfully.');
+            ->with('success', 'Student updated successfully.');
     }
-
-
 
     /**
      * Remove the specified student from storage.
@@ -106,6 +103,6 @@ class StudentController extends Controller
         $student->delete();
 
         return redirect()->route('admin.students.index')
-                         ->with('success', 'Student deleted successfully.');
+            ->with('success', 'Student deleted successfully.');
     }
 }

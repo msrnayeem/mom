@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCourseRequest;
-use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 
 class CourseController extends Controller
@@ -13,7 +11,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        
+
         $courses = Course::visible()->get();
 
         return view('course.index', compact('courses'));
@@ -21,13 +19,12 @@ class CourseController extends Controller
 
     public function courseDetails(Course $course)
     {
-        
+
         // If a batch is provided, ensure it belongs to the given course
-        if (!$course) {
+        if (! $course) {
             return redirect()->route('course.index')->with('error', 'Invalid batch selection.');
         }
 
         return view('course.show', compact('course'));
     }
-
 }

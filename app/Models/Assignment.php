@@ -13,7 +13,6 @@ class Assignment extends Model
         return $this->belongsTo(Course::class);
     }
 
-   
     public function files()
     {
         return $this->hasMany(AssignmentFile::class);
@@ -30,5 +29,4 @@ class Assignment extends Model
     {
         return $this->course->teacher();
     }
-
 }

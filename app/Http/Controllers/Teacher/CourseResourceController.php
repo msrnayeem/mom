@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Enrollment;
-use App\Models\courseResource;
 use App\Models\Course;
+use App\Models\courseResource;
+use App\Models\Enrollment;
+use Illuminate\Http\Request;
 
 class CourseResourceController extends Controller
 {
@@ -20,7 +20,6 @@ class CourseResourceController extends Controller
         return view('teacher.pages.create_resource', compact('course'));
     }
 
-    
     public function store(Request $request)
     {
         $request->validate([
@@ -45,14 +44,13 @@ class CourseResourceController extends Controller
             'file_path' => $filePath,
         ]);
 
-       
         return redirect()->route('teacher.course.resource', $request->course_id)
-        ->with('success', 'Course resource added successfully.');
-    
+            ->with('success', 'Course resource added successfully.');
+
     }
 
     // public function courseResource(Enrollment $enrollment){
-        
+
     //     $course_id = $enrollment->course_id;
 
     //     return view('teacher.pages.course_resource', compact('course_id'));

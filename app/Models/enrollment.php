@@ -13,7 +13,7 @@ class Enrollment extends Model
         'enrollment_status',
         'remarks',
     ];
-    
+
     public function student()
     {
         return $this->belongsTo(User::class, 'user_id');

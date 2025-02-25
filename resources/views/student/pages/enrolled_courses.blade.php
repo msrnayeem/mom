@@ -1,8 +1,6 @@
-
 @extends('student.layouts.student')
 
 @section('content')
-    
     <!-- rts dahboard-area-main-wrapper -->
     <div class="dashboard--area-main pt--100">
         <div class="container">
@@ -13,10 +11,10 @@
                         <h5 class="title">My Courses</h5>
                     </div>
                     <!-- in progress course area end -->
-            
+
                     <!-- my course enroll wrapper -->
                     <div class="my-course-enroll-wrapper-board">
-                       
+
                         <div class="single-course-inroll-board head">
                             <div class="name">
                                 <p>Course Name</p>
@@ -58,7 +56,7 @@
                                     <p>{{ $enrollment->enrollment_status ? 'Confirmed' : 'Not Confirmed' }}</p>
                                 </div>
                                 <div class="enroll">
-                                    <p>{{$enrollment->course->end_date}}</p>
+                                    <p>{{ $enrollment->course->end_date }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -66,9 +64,8 @@
                     <!-- my course enroll wrapper end -->
                 </div>
             </div>
-            
-        </div>
-        
-    </div>
 
+        </div>
+
+    </div>
 @endsection

@@ -2,29 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\enrollment;
 use App\Models\Course;
-
+use App\Models\enrollment;
 use Illuminate\Http\Request;
-
 
 class EnrollmentController extends Controller
 {
     public function store(Request $request, Course $course)
     {
-        
-        if(!auth()->user() || auth()->user()->role !== 'student'){
+
+        if (! auth()->user() || auth()->user()->role !== 'student') {
             return redirect()->guest(route('login'));
         }
         try {
-            
+
             // Ensure batch is open and admission is not over
-            if (!$course->isAdmissionOpen()) {
+            if (! $course->isAdmissionOpen()) {
                 return back()->with('error', 'Admissions for this batch have closed.');
             }
 
             $user = auth()->user();
-            
+
             $existingEnrollment = Enrollment::where('user_id', $user->id)->where('course_id', $course->id)->first();
 
             if ($existingEnrollment) {
@@ -48,11 +46,10 @@ class EnrollmentController extends Controller
         } catch (\Exception $e) {
             // Handle any exceptions that occur
             // Log the error for debugging purposes
-            \Log::error('Enrollment failed: ' . $e->getMessage());
+            \Log::error('Enrollment failed: '.$e->getMessage());
 
             // Redirect with an error message
             return back()->with('success', $e->getMessage());
         }
     }
-
 }

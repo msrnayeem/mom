@@ -18,7 +18,6 @@ class Category extends Model
         return \Carbon\Carbon::parse($value)->format('d-m-Y');
     }
 
-
     /**
      * Get the courses for the category.
      */
@@ -26,7 +25,6 @@ class Category extends Model
     {
         return $this->hasMany(Course::class);
     }
-
 
     /**
      * Get the next position to use.
@@ -45,7 +43,7 @@ class Category extends Model
     {
         static::creating(function ($category) {
             // Set the position if not already set
-            if (!$category->position) {
+            if (! $category->position) {
                 $category->position = self::getNextPosition();
             }
         });

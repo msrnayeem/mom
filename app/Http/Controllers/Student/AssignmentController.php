@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Assignment;
 use App\Models\AssignmentFile;
 use Illuminate\Http\Request;
@@ -31,7 +30,6 @@ class AssignmentController extends Controller
         return view('student.pages.assignments_view', compact('assignment', 'studentFiles'));
     }
 
-
     public function uploadFileAssignment(Request $request, Assignment $assignment)
     {
         // Validate the incoming request
@@ -55,7 +53,4 @@ class AssignmentController extends Controller
 
         return redirect()->route('student.assignment.view', $assignment)->with('success', 'Your assignment has been uploaded successfully!');
     }
-
-
-
 }

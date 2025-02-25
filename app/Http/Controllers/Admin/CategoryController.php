@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -40,8 +39,8 @@ class CategoryController extends Controller
 
         // Check if the same name exists for the combination of languages
         $exists = Category::whereJsonContains('name', ['en' => $request->name['en']])
-                        ->orWhereJsonContains('name', ['bn' => $request->name['bn']])
-                        ->exists();
+            ->orWhereJsonContains('name', ['bn' => $request->name['bn']])
+            ->exists();
 
         if ($exists) {
             return redirect()->back()->withErrors(['name' => 'The category name must be unique across all languages.'])->withInput();
@@ -61,14 +60,10 @@ class CategoryController extends Controller
         }
     }
 
-
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
-    {
-
-    }
+    public function show(Category $category) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -81,7 +76,6 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-
     public function update(Request $request, Category $category)
     {
         // Validate the request data
@@ -93,7 +87,6 @@ class CategoryController extends Controller
             'position' => 'nullable|integer',
         ]);
 
-
         // Update the category details
         try {
             $category->update([
@@ -104,10 +97,9 @@ class CategoryController extends Controller
 
             return redirect()->route('admin.categories.index')->with('success', 'category updated successfully.');
         } catch (\Exception $e) {
-            return redirect()->route('admin.categories.index')->with('error', 'Error: ' . $e->getMessage());
+            return redirect()->route('admin.categories.index')->with('error', 'Error: '.$e->getMessage());
         }
     }
-
 
     /**
      * Remove the specified resource from storage.

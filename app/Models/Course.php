@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
@@ -24,7 +24,6 @@ class Course extends Model
         'start_date',
         'end_date',
     ];
-    
 
     // Cast JSON field to an array
     protected $casts = [
@@ -38,8 +37,6 @@ class Course extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
-
 
     public function teacher()
     {
@@ -57,13 +54,11 @@ class Course extends Model
     /**
      * check all the enrollments for this batch
      */
-
     public function enrollments()
     {
         return $this->hasMany(Enrollment::class);
     }
 
-    
     public function students()
     {
         return $this->belongsToMany(User::class, 'enrollments', 'course_id', 'user_id');

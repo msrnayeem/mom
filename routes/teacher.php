@@ -1,17 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Middleware\TeacherMiddleware;
-
-use App\Http\Controllers\Teacher\ProfileController;
-use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\AssignmentTController;
 use App\Http\Controllers\Teacher\CourseResourceController;
-
+use App\Http\Controllers\Teacher\ProfileController;
+use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Middleware\TeacherMiddleware;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware(TeacherMiddleware::class)->prefix('teacher')->name('teacher.')->group(function () {
-    Route::get('/dashboard',[TeacherController::class, 'index'] )->name('dashboard');
+    Route::get('/dashboard', [TeacherController::class, 'index'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'myProfile'])->name('profile');
     Route::get('/profile/edit', [ProfileController::class, 'editProfile'])->name('profile.edit');
@@ -31,9 +28,7 @@ Route::middleware(TeacherMiddleware::class)->prefix('teacher')->name('teacher.')
     //student in course
     Route::get('/students/{course}', [TeacherController::class, 'studentsInCourse'])->name('course.students');
 
-
     Route::get('/assignments', [AssignmentTController::class, 'index'])->name('assignment.index');
     Route::get('/assignments/{assignment}', [AssignmentTController::class, 'view'])->name('assignment.view');
-    Route::post('assignments-file/{assignment}/upload',[AssignmentTController::class, 'uploadFileAssignment'])->name('assignment.files.upload');
+    Route::post('assignments-file/{assignment}/upload', [AssignmentTController::class, 'uploadFileAssignment'])->name('assignment.files.upload');
 });
-

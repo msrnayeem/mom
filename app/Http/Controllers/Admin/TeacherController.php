@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
@@ -16,6 +15,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = User::where('role', 'teacher')->get();
+
         return view('admin.teachers.index', compact('teachers'));
     }
 
@@ -71,7 +71,7 @@ class TeacherController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $teacher->id,
+            'email' => 'required|string|email|max:255|unique:users,email,'.$teacher->id,
             'password' => 'nullable|string|confirmed|min:8',
         ]);
 
@@ -93,6 +93,7 @@ class TeacherController extends Controller
     public function destroy(User $teacher)
     {
         $teacher->delete();
+
         return redirect()->route('admin.teachers.index')->with('success', 'Teacher deleted successfully.');
     }
 }

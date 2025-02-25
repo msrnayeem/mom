@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseResource extends Model
 {
-    protected $fillable = ['user_id','course_id', 'content', 'title','file_path'];
+    protected $fillable = ['user_id', 'course_id', 'content', 'title', 'file_path'];
 
     public function sender()
     {

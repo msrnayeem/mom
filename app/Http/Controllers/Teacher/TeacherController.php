@@ -3,26 +3,23 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 //enrolled_courses
 use App\Models\Course;
-use App\Models\Enrollment;
 
 class TeacherController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('teacher.pages.index');
     }
 
-    public function enrolledCourses(){
+    public function enrolledCourses()
+    {
 
         $courses = Course::where('teacher_id', auth()->user()->id)->get();
 
         return view('teacher.pages.enrolled_courses', compact('courses'));
     }
-
-    
 
     public function studentsInCourse(Course $course)
     {
@@ -35,5 +32,4 @@ class TeacherController extends Controller
 
         return view('teacher.pages.student_in_course', compact('course', 'students'));
     }
-
 }

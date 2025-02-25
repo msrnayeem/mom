@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -43,12 +42,10 @@ class User extends Authenticatable
         ];
     }
 
-
     public function getStudentDetailsAttribute()
     {
         return $this->role === 'student' ? $this->hasOne(Student::class, 'user_id', 'id')->first() : null;
     }
-
 
     public function teacher()
     {
@@ -69,23 +66,19 @@ class User extends Authenticatable
     {
         return $this->courses()->count();
     }
-    
+
     public function assignments()
     {
         return $this->hasManyThrough(Assignment::class, Enrollment::class, 'user_id', 'course_id', 'id', 'course_id');
     }
 
     public function pendingAssignmentsCount()
-{
-    return $this->assignments()->where('due_date', '>', now())->count();
-}
-
+    {
+        return $this->assignments()->where('due_date', '>', now())->count();
+    }
 
     public function teacherAssignments()
     {
         return $this->hasManyThrough(Assignment::class, Course::class, 'teacher_id', 'course_id');
     }
-
-
-
 }

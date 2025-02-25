@@ -3,23 +3,24 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-use App\Models\User;
-use App\Models\Student;
-
 class ProfileController extends Controller
 {
-    public function myProfile(){
-        
+    public function myProfile()
+    {
+
         $profile = auth()->user();
 
         return view('student.pages.profile', compact('profile'));
     }
 
-    public function editProfile(){
-        
+    public function editProfile()
+    {
+
         $profile = auth()->user();
 
         return view('student.pages.edit_profile', compact('profile'));
@@ -27,13 +28,13 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
-        
+
         $student = auth()->user();
 
         // Base validation rules for primary information
         $primaryRules = [
-            'name'  => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $student->id,
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$student->id,
         ];
 
         // If password update is requested, add password validation rules
@@ -45,7 +46,7 @@ class ProfileController extends Controller
 
         // Prepare data for primary info update
         $updateData = [
-            'name'  => $request->name,
+            'name' => $request->name,
             'email' => $request->email,
         ];
 
@@ -59,7 +60,7 @@ class ProfileController extends Controller
         // Update additional student details only if any additional fields are provided
         if ($student->role === 'student' && ($request->filled('phone') || $request->filled('whatsapp') || $request->filled('address'))) {
             $additionalRules = [
-                'phone'   => 'nullable|string|max:255',
+                'phone' => 'nullable|string|max:255',
                 'whatsapp' => 'nullable|string|max:255',
                 'address' => 'nullable|string|max:255',
             ];
@@ -68,14 +69,14 @@ class ProfileController extends Controller
 
             if ($student->student_details) {
                 $student->student_details->update([
-                    'phone'   => $request->phone,
+                    'phone' => $request->phone,
                     'whatsapp' => $request->whatsapp,
                     'address' => $request->address,
                 ]);
             } else {
                 Student::create([
                     'user_id' => $student->id,
-                    'phone'   => $request->phone,
+                    'phone' => $request->phone,
                     'whatsapp' => $request->whatsapp,
                     'address' => $request->address,
                 ]);
@@ -89,8 +90,8 @@ class ProfileController extends Controller
     {
         // Base validation rules for primary information
         $primaryRules = [
-            'name'  => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $student->id,
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$student->id,
         ];
 
         // If password update is requested, add password validation rules
@@ -102,7 +103,7 @@ class ProfileController extends Controller
 
         // Prepare data for primary info update
         $updateData = [
-            'name'  => $request->name,
+            'name' => $request->name,
             'email' => $request->email,
         ];
 
@@ -116,7 +117,7 @@ class ProfileController extends Controller
         // Update additional student details only if any additional fields are provided
         if ($student->role === 'student' && ($request->filled('phone') || $request->filled('whatsap') || $request->filled('address'))) {
             $additionalRules = [
-                'phone'   => 'nullable|string|max:255',
+                'phone' => 'nullable|string|max:255',
                 'whatsap' => 'nullable|string|max:255',
                 'address' => 'nullable|string|max:255',
             ];
@@ -125,14 +126,14 @@ class ProfileController extends Controller
 
             if ($student->student_details) {
                 $student->student_details->update([
-                    'phone'   => $request->phone,
+                    'phone' => $request->phone,
                     'whatsap' => $request->whatsap,
                     'address' => $request->address,
                 ]);
             } else {
                 Student::create([
                     'user_id' => $student->id,
-                    'phone'   => $request->phone,
+                    'phone' => $request->phone,
                     'whatsap' => $request->whatsap,
                     'address' => $request->address,
                 ]);
@@ -140,6 +141,6 @@ class ProfileController extends Controller
         }
 
         return redirect()->route('admin.students.index')
-                        ->with('success', 'Student updated successfully.');
+            ->with('success', 'Student updated successfully.');
     }
 }
