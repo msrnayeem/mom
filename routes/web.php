@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -12,6 +13,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('auth/{provider}', [SocialAuthController::class, 'redirectToProvider'])
+    ->name('social.redirect');
+
+Route::get('auth/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback'])
+    ->name('social.callback');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
@@ -32,7 +39,6 @@ Route::get('/details', function () {
     return view('details');
 })->name('details');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         if (auth()->user()->role == 'admin') {
@@ -47,5 +53,3 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/send-message', [MessageController::class, 'sendMessage'])->middleware('auth');
 Route::get('/messages/{course_id}', [MessageController::class, 'getMessages'])->middleware('auth');
-
-
