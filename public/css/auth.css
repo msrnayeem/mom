@@ -1,0 +1,81 @@
+.login-container {
+    padding-top: 80px;
+}
+
+/* Form styling without a card wrapper */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    color: #006400;
+}
+
+.btn-primary {
+    background-color: #006400;
+    border-color: #006400;
+}
+
+.btn-primary:hover {
+    background-color: #004d00;
+    border-color: #004d00;
+}
+
+.btn-danger {
+    background-color: #a80000;
+    border-color: #a80000;
+}
+
+.btn-danger:hover {
+    background-color: #800000;
+    border-color: #800000;
+}
+
+.social-auth-links p {
+    color: #006400;
+    font-weight: bold;
+}
+
+
+.register-form {
+    max-width: 450px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    color: #006400;
+}
+
+.btn-primary {
+    background-color: #006400;
+    border-color: #006400;
+}
+
+.btn-primary:hover {
+    background-color: #004d00;
+    border-color: #004d00;
+}
+
+.btn-danger {
+    background-color: #a80000;
+    border-color: #a80000;
+}
+
+.btn-danger:hover {
+    background-color: #800000;
+    border-color: #800000;
+}
+
+.social-auth-links p {
+    color: #006400;
+    font-weight: bold;
+}

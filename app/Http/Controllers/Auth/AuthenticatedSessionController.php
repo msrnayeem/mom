@@ -16,7 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('admin.auth.login');
+        return view('login');
     }
 
     /**
@@ -35,15 +35,13 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(route('admin.dashboard'));  // Admin's dashboard
         } elseif (auth()->user()->role === 'student') {
             return redirect(session('url.intended', route('student.dashboard')));
-        }
-        else if(auth()->user()->role === 'teacher'){
+        } elseif (auth()->user()->role === 'teacher') {
             return redirect(session('url.intended', route('teacher.dashboard')));
         }
-        
+
         // Default fallback if role is not matched
         return redirect()->intended('/');  // Home page or another default route
     }
-
 
     /**
      * Destroy an authenticated session.
