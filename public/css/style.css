@@ -1,0 +1,71 @@
+body {
+    font-family: 'Scheherazade New', serif;
+    cursor: default;
+    background-color: #f2f9f1;
+    /* A soft, light background */
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 100, 0, 0.7), rgba(0, 100, 0, 0.7)),
+        url('https://via.placeholder.com/1920x800?text=Islamic+Pattern') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    height: 80vh;
+    color: #fff;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Gradient overlay already applied in the background property */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Section Headings in a deep green tone */
+h2 {
+    color: #006400;
+}
+
+
+/* Card styling with subtle gold accents */
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #d4af37;
+    /* Gold accent */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s;
+}
+
+/* Button styles with Islamic-inspired colors */
+.btn-primary {
+    background-color: #006400;
+    border-color: #006400;
+}
+
+.btn-primary:hover {
+    background-color: #004d00;
+    border-color: #004d00;
+}
+
+.btn-warning {
+    background-color: #d4af37;
+    border-color: #d4af37;
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: #b5912e;
+    border-color: #b5912e;
+}

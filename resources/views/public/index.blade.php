@@ -1,99 +1,13 @@
-<!DOCTYPE html>
-<html lang="bn">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>মদিনা অনলাইন মাদরাসা</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Scheherazade New', serif;
-            cursor: default;
-            background-color: #f2f9f1;
-            /* A soft, light background */
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 100, 0, 0.7), rgba(0, 100, 0, 0.7)),
-                url('https://via.placeholder.com/1920x800?text=Islamic+Pattern') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            height: 80vh;
-            color: #fff;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Gradient overlay already applied in the background property */
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Section Headings in a deep green tone */
-        h2 {
-            color: #006400;
-        }
-
-
-        /* Card styling with subtle gold accents */
-        .card {
-            border: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-top: 4px solid #d4af37;
-            /* Gold accent */
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            transition: transform 0.3s;
-        }
-
-        /* Button styles with Islamic-inspired colors */
-        .btn-primary {
-            background-color: #006400;
-            border-color: #006400;
-        }
-
-        .btn-primary:hover {
-            background-color: #004d00;
-            border-color: #004d00;
-        }
-
-        .btn-warning {
-            background-color: #d4af37;
-            border-color: #d4af37;
-            color: #fff;
-        }
-
-        .btn-warning:hover {
-            background-color: #b5912e;
-            border-color: #b5912e;
-        }
-    </style>
-</head>
-
-<body>
-
-    @include('front_components.main_navbar')
-
+@section('content')
     <!-- Hero Section -->
     <section class="hero d-flex align-items-center justify-content-center">
         <div class="container text-center hero-content">
             <h1 class="display-4">ইসলামী জ্ঞানের মুক্ত প্ল্যাটফর্ম: সহজ, সবার জন্য, সর্বত্র</h1>
             <p class="lead mt-3">ইসলামের সঠিক ও বিশুদ্ধ জ্ঞান এখন আপনার হাতের নাগালে</p>
             <form class="d-flex justify-content-center mt-4">
-                <input class="form-control w-50 me-2" type="search" placeholder="কোর্সের নাম লিখুন"
-                    aria-label="Search">
+                <input class="form-control w-50 me-2" type="search" placeholder="কোর্সের নাম লিখুন" aria-label="Search">
                 <button class="btn btn-warning" type="submit">খুঁজুন</button>
             </form>
         </div>
@@ -172,9 +86,8 @@
                 <!-- Teacher 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 text-center">
-                        <img src="https://avatar.iran.liara.run/public/boy"
-                            class="card-img-top rounded-circle mx-auto mt-3" style="width:150px; height:150px;"
-                            alt="আবদুল্লাহ হোসেন">
+                        <img src="https://avatar.iran.liara.run/public/boy" class="card-img-top rounded-circle mx-auto mt-3"
+                            style="width:150px; height:150px;" alt="আবদুল্লাহ হোসেন">
                         <div class="card-body">
                             <h5 class="card-title">আবদুল্লাহ হোসেন</h5>
                             <p class="card-text">ইসলামী ইতিহাস ও ফিকহ বিশেষজ্ঞ</p>
@@ -184,9 +97,8 @@
                 <!-- Teacher 2 -->
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 text-center">
-                        <img src="https://avatar.iran.liara.run/public/boy"
-                            class="card-img-top rounded-circle mx-auto mt-3" style="width:150px; height:150px;"
-                            alt="মুহাম্মদ ইসলাম">
+                        <img src="https://avatar.iran.liara.run/public/boy" class="card-img-top rounded-circle mx-auto mt-3"
+                            style="width:150px; height:150px;" alt="মুহাম্মদ ইসলাম">
                         <div class="card-body">
                             <h5 class="card-title">মুহাম্মদ ইসলাম</h5>
                             <p class="card-text">কুরআন তেলাওয়াত ও হিফজ বিশেষজ্ঞ</p>
@@ -196,9 +108,8 @@
                 <!-- Teacher 3 -->
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 text-center">
-                        <img src="https://avatar.iran.liara.run/public/boy"
-                            class="card-img-top rounded-circle mx-auto mt-3" style="width:150px; height:150px;"
-                            alt="শায়খ আব্দুল করিম">
+                        <img src="https://avatar.iran.liara.run/public/boy" class="card-img-top rounded-circle mx-auto mt-3"
+                            style="width:150px; height:150px;" alt="শায়খ আব্দুল করিম">
                         <div class="card-body">
                             <h5 class="card-title">শায়খ আব্দুল করিম</h5>
                             <p class="card-text">আরবি ভাষা ও ব্যাকরণ বিশেষজ্ঞ</p>
@@ -474,169 +385,4 @@
             </div>
         </div>
     </section>
-
-    @include('front_components.main_footer')
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script>
-        // GSAP animations for various sections (mobile and desktop)
-        let mm = gsap.matchMedia();
-        mm.add("(max-width: 767px)", () => {
-            gsap.from(".hero h1", {
-                duration: 1.5,
-                y: -30,
-                opacity: 0,
-                ease: "power3.out"
-            });
-            gsap.from(".hero p", {
-                duration: 1.5,
-                y: 30,
-                opacity: 0,
-                ease: "power3.out",
-                delay: 0.5
-            });
-            gsap.from("#featured-courses .card", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 1
-            });
-            gsap.from("#teachers .card", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 1.3
-            });
-            gsap.from("#why-choose-us .col", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 1.8
-            });
-            gsap.from("#donation .card", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 2.3
-            });
-            gsap.from("#events .card", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 2.8
-            });
-            gsap.from("#testimonials .carousel-item", {
-                duration: 0.5,
-                opacity: 0,
-                y: 30,
-                stagger: 0.3,
-                delay: 1.5
-            });
-            gsap.from("#faq .accordion-item", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 3.8
-            });
-            gsap.from("#about h2", {
-                duration: 1,
-                x: -30,
-                opacity: 0,
-                delay: 4.3
-            });
-            gsap.from("#contact h2", {
-                duration: 1,
-                x: 30,
-                opacity: 0,
-                delay: 4.8
-            });
-        });
-        mm.add("(min-width: 768px)", () => {
-            gsap.from(".hero h1", {
-                duration: 1.5,
-                y: -50,
-                opacity: 0,
-                ease: "power3.out"
-            });
-            gsap.from(".hero p", {
-                duration: 1.5,
-                y: 50,
-                opacity: 0,
-                ease: "power3.out",
-                delay: 0.5
-            });
-            gsap.from("#featured-courses .card", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 1
-            });
-            gsap.from("#teachers .card", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 1.3
-            });
-            gsap.from("#why-choose-us .col", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 1.8
-            });
-            gsap.from("#donation .card", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 2.3
-            });
-            gsap.from("#events .card", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 2.8
-            });
-            gsap.from("#testimonials .carousel-item", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.3,
-                delay: 3.3
-            });
-            gsap.from("#faq .accordion-item", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 3.8
-            });
-            gsap.from("#about h2", {
-                duration: 1,
-                x: -50,
-                opacity: 0,
-                delay: 4.3
-            });
-            gsap.from("#contact h2", {
-                duration: 1,
-                x: 50,
-                opacity: 0,
-                delay: 4.8
-            });
-        });
-    </script>
-
-</body>
-
-</html>
+@endsection
