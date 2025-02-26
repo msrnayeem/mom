@@ -1,0 +1,23 @@
+.navbar {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-solid {
+    background-color: #343a40 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-transparent {
+    background-color: transparent !important;
+}
+
+@media (max-width: 991px) {
+    .navbar {
+        background-color: #343a40 !important;
+    }
+}
+
+
+.navbar .nav-link {
+    font-size: 1.25rem;
+}

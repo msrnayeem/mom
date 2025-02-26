@@ -15,27 +15,6 @@
             /* A soft, light background */
         }
 
-        /* Navbar styles (unchanged behavior) */
-        .navbar {
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .navbar-solid {
-            background-color: #343a40 !important;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-transparent {
-            background-color: transparent !important;
-        }
-
-        @media (max-width: 991px) {
-            .navbar {
-                background-color: #343a40 !important;
-            }
-        }
-
-        /* Hero Section with an Islamic-inspired patterned background and green overlay */
         .hero {
             background: linear-gradient(rgba(0, 100, 0, 0.7), rgba(0, 100, 0, 0.7)),
                 url('https://via.placeholder.com/1920x800?text=Islamic+Pattern') no-repeat center center;
@@ -65,10 +44,6 @@
             color: #006400;
         }
 
-        /* Navbar link font size remains increased */
-        .navbar .nav-link {
-            font-size: 1.25rem;
-        }
 
         /* Card styling with subtle gold accents */
         .card {
@@ -104,159 +79,12 @@
             background-color: #b5912e;
             border-color: #b5912e;
         }
-
-        /* Footer with a gradient of deep green to turquoise */
-        footer {
-            background: linear-gradient(to right, #2c3e50, #34495e);
-            /* Dark gradient */
-            padding: 4rem 0;
-            color: #fff;
-        }
-
-        footer h5 {
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        footer p,
-        footer ul {
-            font-size: 1rem;
-        }
-
-        footer ul {
-            padding-left: 0;
-        }
-
-        footer ul li {
-            list-style: none;
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: #f1c40f;
-            /* Gold color for links */
-            transition: color 0.3s ease-in-out;
-        }
-
-        footer a:hover {
-            color: #e67e22;
-            /* Orange color on hover */
-        }
-
-        /* Social Icons */
-        .social-icons a {
-            font-size: 1.5rem;
-            margin: 0 10px;
-            display: inline-block;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .social-icons a:hover {
-            transform: scale(1.2);
-        }
-
-        /* Bottom Section */
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 1rem;
-            margin-top: 2rem;
-        }
-
-        #contact {
-            background: linear-gradient(to right, #f2f9f1, #e6f7e6);
-            /* Soft, fresh gradient */
-            padding: 4rem 0;
-        }
-
-        #contact h2 {
-            color: #006400;
-            /* Deep green for headings */
-            font-weight: bold;
-            margin-bottom: 2rem;
-        }
-
-        #contact p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Style for the contact info on the left */
-        #contact .contact-info p {
-            line-height: 1.6;
-        }
-
-        /* Form Input Styles */
-        #contact .form-control {
-            border-radius: 0.5rem;
-            border: 1px solid #ccc;
-            box-shadow: none;
-            padding: 0.75rem;
-        }
-
-        #contact .form-control:focus {
-            border-color: #006400;
-            box-shadow: 0 0 5px rgba(0, 100, 0, 0.5);
-        }
-
-        /* Button Styles */
-        #contact .btn-dark {
-            background-color: #006400;
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem 2rem;
-            transition: background-color 0.3s ease;
-        }
-
-        #contact .btn-dark:hover {
-            background-color: #004d00;
-        }
-
-        /* Optional: Add some spacing between the contact info and form on smaller screens */
-        @media (max-width: 767px) {
-            #contact .col-md-6 {
-                margin-bottom: 2rem;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <!-- Navigation (Fixed Top with dynamic behavior for desktop only) -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('MOM-logo-02.jpg') }}" alt="মদিনা অনলাইন মাদরাসা" style="width: 122px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- You can keep ms-auto here if you want right-aligned items; remove it for left alignment -->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#featured-courses">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
-                    @guest
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Log In</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                    @else
-                        <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Log Out
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
-                    @endguest
-                </ul>
-            </div>
-        </div>
-    </nav>
+
+    @include('front_components.main_navbar')
 
     <!-- Hero Section -->
     <section class="hero d-flex align-items-center justify-content-center">
@@ -290,7 +118,7 @@
                                 <li>ফি: ১০,০০০ টাকা</li>
                                 <li>ইনস্ট্রাক্টর: ড. মোহাম্মদ রইয়াত</li>
                             </ul>
-                            <a href="#course-details" class="btn btn-primary">আরো জানুন</a>
+                            <a href="{{ route('details') }}" class="btn btn-primary">আরো জানুন</a>
                         </div>
                     </div>
                 </div>
@@ -308,7 +136,7 @@
                                 <li>ফি: ৫,০০০ টাকা</li>
                                 <li>ইনস্ট্রাক্টর: শায়খ মুসলিম</li>
                             </ul>
-                            <a href="#course-details" class="btn btn-primary">আরো জানুন</a>
+                            <a href="{{ route('details') }}" class="btn btn-primary">আরো জানুন</a>
                         </div>
                     </div>
                 </div>
@@ -325,7 +153,7 @@
                                 <li>ফি: ফ্রি</li>
                                 <li>ইনস্ট্রাক্টর: আয়েশা বেগম</li>
                             </ul>
-                            <a href="#course-details" class="btn btn-primary">আরো জানুন</a>
+                            <a href="{{ route('details') }}" class="btn btn-primary">আরো জানুন</a>
                         </div>
                     </div>
                 </div>
@@ -647,96 +475,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-4">যোগাযোগ</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="contact-info">
-                        <p><strong>ফোন:</strong> +৮৮-০১২৩৪৫৬৭৮৯</p>
-                        <p><strong>ইমেইল:</strong> info@modinaonlinemadrasah.com</p>
-                        <p><strong>ঠিকানা:</strong> ঢাকা, বাংলাদেশ</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    <div class="contact-form">
-                        <form action="{{ route('feedback.store') }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <input type="text" class="form-control" name="name" placeholder="নাম"
-                                    required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" name="email" placeholder="ইমেইল">
-                            </div>
-                            <div class="mb-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="বার্তা" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-dark">পাঠান</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="py-5">
-        <div class="container">
-            <div class="row">
-                <!-- About -->
-                <div class="col-md-4 mb-4">
-                    <h5>মদিনা অনলাইন মাদরাসা</h5>
-                    <p>ইসলামী শিক্ষার উৎকর্ষ সাধনে নিবেদিত।</p>
-                </div>
-                <!-- Quick Links -->
-                <div class="col-md-4 mb-4">
-                    <h5>দ্রুত লিঙ্ক</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none">হোম</a></li>
-                        <li><a href="#courses" class="text-decoration-none">কোর্স</a></li>
-                        <li><a href="#about" class="text-decoration-none">আমাদের সম্পর্কে</a></li>
-                        <li><a href="#contact" class="text-decoration-none">যোগাযোগ</a></li>
-                        <li><a href="#" class="text-decoration-none">প্রাইভেসি পলিসি</a></li>
-                        <li><a href="#" class="text-decoration-none">টার্মস অব সার্ভিস</a></li>
-                    </ul>
-                </div>
-                <!-- Contact Info -->
-                <div class="col-md-4 mb-4">
-                    <h5>যোগাযোগ</h5>
-                    <p>ঢাকা, বাংলাদেশ</p>
-                    <p>ফোন: +৮৮-০১২৩৪৫৬৭৮৯</p>
-                    <p>ইমেইল: info@modinaonlinemadrasah.com</p>
-                </div>
-            </div>
-
-            <!-- Social Media -->
-            <div class="row mt-4">
-                <div class="col text-center social-icons">
-                    <a href="#"><i class="fab fa-facebook-f text-white"></i></a>
-                    <a href="#"><i class="fab fa-twitter text-white"></i></a>
-                    <a href="#"><i class="fab fa-instagram text-white"></i></a>
-                    <a href="#"><i class="fab fa-youtube text-white"></i></a>
-                </div>
-            </div>
-
-            <!-- Bottom Footer -->
-            <div class="row mt-4 footer-bottom text-center">
-                <div class="col">
-                    <p class="mb-0">© ২০২৫ মদিনা অনলাইন মাদরাসা. সকল স্বত্ব সংরক্ষিত।</p>
-                    <p class="mb-0">Developed by <a href="#" class="text-decoration-none">Your Name</a></p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @include('front_components.main_footer')
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -897,26 +636,7 @@
             });
         });
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let navbar = document.querySelector(".navbar");
 
-            function updateNavbar() {
-                if (window.scrollY > 50) {
-                    navbar.classList.remove("navbar-transparent");
-                    navbar.classList.add("navbar-solid");
-                } else {
-                    navbar.classList.remove("navbar-solid");
-                    navbar.classList.add("navbar-transparent");
-                }
-            }
-
-            if (window.innerWidth > 991) {
-                navbar.classList.add("navbar-transparent");
-                window.addEventListener("scroll", updateNavbar);
-            }
-        });
-    </script>
 </body>
 
 </html>
