@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-
-</head>
+@include('layouts.components.head')
 
 <body class="font-sans antialiased">
 
-    @include('front_components.main_navbar')
+    @include('layouts.components.main_navbar')
     @yield('content')
-    @include('front_components.main_footer')
+
+    @if (!isset($noFooter) || !$noFooter)
+        @include('layouts.components.main_footer')
+    @endif
+
+
+    @include('layouts.components.js')
 
 </body>
 

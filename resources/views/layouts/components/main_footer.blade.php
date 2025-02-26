@@ -1,4 +1,4 @@
- <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+
 
  <!-- Contact Section -->
  <section id="contact" class="py-5 bg-light">

@@ -152,3 +152,23 @@ mm.add("(min-width: 768px)", () => {
         delay: 4.8
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let navbar = document.querySelector(".navbar");
+
+    function updateNavbar() {
+        if (window.scrollY > 50) {
+            navbar.classList.remove("navbar-transparent");
+            navbar.classList.add("navbar-solid");
+        } else {
+            navbar.classList.remove("navbar-solid");
+            navbar.classList.add("navbar-transparent");
+        }
+    }
+
+    if (window.innerWidth > 991) {
+        navbar.classList.add("navbar-transparent");
+        window.addEventListener("scroll", updateNavbar);
+    }
+});

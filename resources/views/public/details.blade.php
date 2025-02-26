@@ -1,79 +1,12 @@
-<!DOCTYPE html>
-<html lang="bn">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>মদিনা অনলাইন মাদরাসা</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Scheherazade New', serif;
-            cursor: default;
-            background-color: #f2f9f1;
-
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 100, 0, 0.7), rgba(0, 100, 0, 0.7)),
-                url('https://via.placeholder.com/1920x800?text=Islamic+Pattern') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            height: 80vh;
-            color: #fff;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            margin-top: 40px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .instructor-img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        @media (min-width: 992px) {
-            .sticky-sidebar {
-                position: sticky;
-                top: 20px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    @include('front_components.main_navbar')
-
+@section('content')
     <section class="hero d-flex align-items-center justify-content-center">
         <div class="container text-center hero-content">
             <h1 class="display-4">আরবাইন কোর্স</h1>
             <p class="lead mt-3">আল্লাহর নামে, আরবি ভাষার মাধুর্য ও রহস্য উদঘাটনের এক অনন্য যাত্রা</p>
         </div>
     </section>
-
-
-
 
     <!-- Main Course Details Content -->
     <section id="course-details" class="py-5">
@@ -210,8 +143,7 @@
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <div class="card">
-                                    <img src="https://via.placeholder.com/350x200" class="card-img-top"
-                                        alt="কুরআন শিক্ষা">
+                                    <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="কুরআন শিক্ষা">
                                     <div class="card-body">
                                         <h6 class="card-title">কুরআন শিক্ষা কোর্স</h6>
                                         <a href="#" class="btn btn-sm btn-outline-primary">বিস্তারিত</a>
@@ -220,8 +152,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="card">
-                                    <img src="https://via.placeholder.com/350x200" class="card-img-top"
-                                        alt="ইসলামী ইতিহাস">
+                                    <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="ইসলামী ইতিহাস">
                                     <div class="card-body">
                                         <h6 class="card-title">ইসলামী ইতিহাস কোর্স</h6>
                                         <a href="#" class="btn btn-sm btn-outline-primary">বিস্তারিত</a>
@@ -270,8 +201,8 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="faq2">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faqCollapse2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faqCollapse2">
                                         কোর্সের ফি ও সময়কাল কত?
                                     </button>
                                 </h2>
@@ -285,8 +216,8 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="faq3">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faqCollapse3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faqCollapse3">
                                         কোর্স শেষে সার্টিফিকেট প্রদান করা হয়?
                                     </button>
                                 </h2>
@@ -308,8 +239,7 @@
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <div class="card">
-                                    <img src="https://via.placeholder.com/350x200" class="card-img-top"
-                                        alt="অ্যালামনি">
+                                    <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="অ্যালামনি">
                                     <div class="card-body">
                                         <h6 class="card-title">মোঃ রফিক</h6>
                                         <p class="card-text">কোর্স শেষে নিজস্ব শিক্ষা প্রতিষ্ঠান চালু করেছেন।</p>
@@ -318,8 +248,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="card">
-                                    <img src="https://via.placeholder.com/350x200" class="card-img-top"
-                                        alt="অ্যালামনি">
+                                    <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="অ্যালামনি">
                                     <div class="card-body">
                                         <h6 class="card-title">সেলিনা খাতুন</h6>
                                         <p class="card-text">অনলাইন শিক্ষায় নেতৃস্থানীয় ব্যক্তিত্ব হিসেবে নিজেকে
@@ -329,8 +258,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="card">
-                                    <img src="https://via.placeholder.com/350x200" class="card-img-top"
-                                        alt="অ্যালামনি">
+                                    <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="অ্যালামনি">
                                     <div class="card-body">
                                         <h6 class="card-title">আবদুল করিম</h6>
                                         <p class="card-text">বহুমুখী আরবী প্রশিক্ষক হিসেবে খ্যাতি অর্জন করেছেন।</p>
@@ -482,147 +410,4 @@
             </div>
         </div>
     </section>
-
-
-    @include('front_components.main_footer')
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script>
-        let mm = gsap.matchMedia();
-
-        // Mobile devices (max-width: 767px)
-        mm.add("(max-width: 767px)", () => {
-            gsap.from(".hero h1", {
-                duration: 1.5,
-                y: -30,
-                opacity: 0,
-                ease: "power3.out"
-            });
-            gsap.from(".hero p", {
-                duration: 1.5,
-                y: 30,
-                opacity: 0,
-                ease: "power3.out",
-                delay: 0.5
-            });
-            gsap.from(".featured-courses .card", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 1
-            });
-            gsap.from("#why-choose-us .col", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 1.5
-            });
-            gsap.from("#events .card", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 2
-            });
-            gsap.from("#testimonials .carousel-item", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.3,
-                delay: 2.5
-            });
-            gsap.from("#faq .accordion-item", {
-                duration: 1,
-                opacity: 0,
-                y: 30,
-                stagger: 0.2,
-                delay: 3
-            });
-            gsap.from("#about h2", {
-                duration: 1,
-                x: -30,
-                opacity: 0,
-                delay: 3.5
-            });
-            gsap.from("#contact h2", {
-                duration: 1,
-                x: 30,
-                opacity: 0,
-                delay: 4
-            });
-        });
-
-        // Desktop devices (min-width: 768px)
-        mm.add("(min-width: 768px)", () => {
-            gsap.from(".hero h1", {
-                duration: 1.5,
-                y: -50,
-                opacity: 0,
-                ease: "power3.out"
-            });
-            gsap.from(".hero p", {
-                duration: 1.5,
-                y: 50,
-                opacity: 0,
-                ease: "power3.out",
-                delay: 0.5
-            });
-            gsap.from(".featured-courses .card", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 1
-            });
-            gsap.from("#why-choose-us .col", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 1.5
-            });
-            gsap.from("#events .card", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 2
-            });
-            gsap.from("#testimonials .carousel-item", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.3,
-                delay: 2.5
-            });
-            gsap.from("#faq .accordion-item", {
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                delay: 3
-            });
-            gsap.from("#about h2", {
-                duration: 1,
-                x: -50,
-                opacity: 0,
-                delay: 3.5
-            });
-            gsap.from("#contact h2", {
-                duration: 1,
-                x: 50,
-                opacity: 0,
-                delay: 4
-            });
-        });
-    </script>
-    <!-- Optionally include Font Awesome for social icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
-</body>
-
-</html>
+@endsection

@@ -1,26 +1,3 @@
-<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let navbar = document.querySelector(".navbar");
-
-        function updateNavbar() {
-            if (window.scrollY > 50) {
-                navbar.classList.remove("navbar-transparent");
-                navbar.classList.add("navbar-solid");
-            } else {
-                navbar.classList.remove("navbar-solid");
-                navbar.classList.add("navbar-transparent");
-            }
-        }
-
-        if (window.innerWidth > 991) {
-            navbar.classList.add("navbar-transparent");
-            window.addEventListener("scroll", updateNavbar);
-        }
-    });
-</script>
-
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">

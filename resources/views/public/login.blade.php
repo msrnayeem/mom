@@ -1,17 +1,6 @@
-<!doctype html>
-<html lang="bn">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>লগ ইন - মদিনা অনলাইন মাদরাসা</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
-</head>
-
-<body>
-
-    @include('navbar')
-
+@section('content')
     <div class="container login-container mt-5">
         <div class="login-form">
             <h4 class="text-center mb-4" style="color: #006400;">আপনার সেশন শুরু করতে লগ ইন করুন</h4>
@@ -59,7 +48,8 @@
             </div>
         </div>
     </div>
+@endsection
 
-</body>
-
-</html>
+@php
+    $noFooter = true;
+@endphp
