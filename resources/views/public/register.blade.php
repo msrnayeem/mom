@@ -85,6 +85,15 @@
             </div>
         </div>
     </div>
+
+    <!-- Minimal Footer -->
+    <footer class="py-3">
+        <div class="container text-center">
+            <p class="mb-0">© ২০২৫ মদিনা অনলাইন মাদরাসা. সকল স্বত্ব সংরক্ষিত।</p>
+            <p class="mb-0">Developed by <a href="mailto:msrnayeem@gmail.com" class="text-decoration-none text-white">Msr
+                    Nayeem</a></p>
+        </div>
+    </footer>
 @endsection
 
 
