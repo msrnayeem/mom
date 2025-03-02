@@ -1,16 +1,34 @@
-.login-container {
-    padding-top: 80px;
+/* Offset content for fixed-top navbar */
+.login-page {
+    padding-top: 100px;
+    margin-bottom: 100px;
 }
 
-/* Form styling without a card wrapper */
-.login-form {
-    max-width: 400px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Left Column (Desktop only) */
+.login-left {
+    background-color: #f8f9fa;
+    min-height: 400px;
+    padding: 20px;
 }
+
+/* Reduce login form width on desktop */
+@media (min-width: 992px) {
+    .login-form {
+        max-width: 400px;
+
+        margin: 0 auto;
+
+    }
+}
+
+/* Add left/right padding on mobile */
+@media (max-width: 991px) {
+    .login-form {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
 
 .form-label {
     color: #006400;
@@ -42,14 +60,7 @@
 }
 
 
-.register-form {
-    max-width: 450px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+
 
 .form-label {
     color: #006400;
@@ -78,4 +89,35 @@
 .social-auth-links p {
     color: #006400;
     font-weight: bold;
+}
+
+/* Offset content to account for the fixed-top navbar */
+.register-page {
+    padding-top: 100px;
+    /* Adjust based on your navbar height */
+    margin-bottom: 100px;
+    /* Extra bottom space if needed */
+}
+
+/* Registration Card Styling */
+.register-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Left Column Styling (Desktop only) */
+.register-left {
+    background-color: #f8f9fa;
+    min-height: 400px;
+    padding: 20px;
+}
+
+/* On mobile, full width is used (default Bootstrap stacking) */
+@media (min-width: 992px) {
+
+    /* Adjust card height if needed */
+    .register-card {
+        min-height: 450px;
+    }
 }

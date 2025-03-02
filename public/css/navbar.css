@@ -21,3 +21,9 @@
 .navbar .nav-link {
     font-size: 1.25rem;
 }
+
+@media (max-width: 768px) {
+    .mobile-margin {
+        margin-top: 13px !important;
+    }
+}

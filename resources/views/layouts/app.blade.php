@@ -5,11 +5,11 @@
 
 <body class="font-sans antialiased">
 
-    @include('layouts.components.main_navbar')
+    @include('layouts.components.navbar')
     @yield('content')
 
     @if (!isset($noFooter) || !$noFooter)
-        @include('layouts.components.main_footer')
+        @include('layouts.components.footer')
     @endif
 
 
