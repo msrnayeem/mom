@@ -156,42 +156,27 @@ mm.add("(min-width: 768px)", () => {
 
 document.addEventListener("DOMContentLoaded", function () {
     let navbar = document.querySelector(".navbar");
-    let currentRoute = window.location.pathname;
+    const currentPath = window.location.pathname;
 
-    if (currentRoute !== "/login" || currentRoute !== "/register") {
+    // For login and register pages, always use solid navbar and exit.
+    if (currentPath === '/login' || currentPath === '/register') {
         navbar.classList.remove("navbar-transparent");
         navbar.classList.add("navbar-solid");
-
+        return;
     }
-    else {
-        function updateNavbar() {
-            if (window.scrollY > 50) {
-                navbar.classList.remove("navbar-transparent");
-                navbar.classList.add("navbar-solid");
-            } else {
-                navbar.classList.remove("navbar-solid");
-                navbar.classList.add("navbar-transparent");
-            }
-        }
 
-        if (window.innerWidth > 991) {
+    function updateNavbar() {
+        if (window.scrollY > 50) {
+            navbar.classList.remove("navbar-transparent");
+            navbar.classList.add("navbar-solid");
+        } else {
+            navbar.classList.remove("navbar-solid");
             navbar.classList.add("navbar-transparent");
-            window.addEventListener("scroll", updateNavbar);
-        } function updateNavbar() {
-
-            if (window.scrollY > 50) {
-                navbar.classList.remove("navbar-transparent");
-                navbar.classList.add("navbar-solid");
-            } else {
-                navbar.classList.remove("navbar-solid");
-                navbar.classList.add("navbar-transparent");
-            }
-        }
-
-        if (window.innerWidth > 991) {
-            navbar.classList.add("navbar-transparent");
-            window.addEventListener("scroll", updateNavbar);
         }
     }
 
+    if (window.innerWidth > 991) {
+        navbar.classList.add("navbar-transparent");
+        window.addEventListener("scroll", updateNavbar);
+    }
 });
